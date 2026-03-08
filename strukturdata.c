@@ -7,7 +7,7 @@ typedef struct Node {
     struct Node *next;
 } Node;
 
-void newNode(Node **Head, int dat){
+void insertLast_Node(Node **Head, int dat){
     Node *New = (Node *)malloc(sizeof(Node));
     New->data = dat;
     New->next = NULL;
@@ -23,7 +23,16 @@ void newNode(Node **Head, int dat){
     }
     Temp->next = New;
 
-}
+};
+
+void insertFirst_Node(Node **Head, int data){
+    Node *New = (Node *)malloc(sizeof(Node));
+    New->data = data;
+    New->next = *Head;
+
+    *Head = New;
+
+};
 
 void cekNode(Node **Head){
     printf("\n");
@@ -46,7 +55,7 @@ void gabungNode(Node **Head, Node **Head1){
 }
 
 void inputNode(Node **Head){
-    char *list = "123456789";
+    char *list = "12345";
     printf("Total Lenght = %lld\n", strlen(list));
     char temp[2];
 
@@ -58,13 +67,13 @@ void inputNode(Node **Head){
         if (i == strlen(list) - 1 ){
             printf("\n");
         }
-        newNode(Head, atoi(temp));
+        insertLast_Node(Head, atoi(temp));
     }
     
 };
 
 void pisahNode(Node **Head){
-    int target = 10;
+    int target = 7;
     Node *temp = *Head;
     Node *temp1 = NULL;
     while(temp->next != NULL){
@@ -81,12 +90,131 @@ void pisahNode(Node **Head){
     temp1 = NULL;
 };
 
+int insertMid_Node(Node **Head, int targetSplit, int data){
+    Node *New = (Node *)malloc(sizeof(Node));
+    Node *Temp1 = NULL;
+    Node *Temp = *Head;
+
+    New->data = data;
+
+    while(Temp->next != NULL){
+
+        if (Temp->data == targetSplit){
+            Temp1 = Temp->next;
+            break;
+        } else {
+            Temp = Temp->next;
+        }
+    };
+
+    New->next = Temp1;
+    Temp->next = New;
+    return Temp->data;
+};
+
+void insertNode(Node **Head){
+    int targetSplit = 3;
+    int data = 20; 
+    insertMid_Node(Head, targetSplit, data);
+    //insertFirst_Node(Head, data);
+    //insertLast_Node(Head, data);
+};
+
+void reverseNode(Node **Head){
+    Node *Curent = *Head;
+    Node *Prev = NULL;
+    Node *Nex = NULL;
+
+    while(Curent->next != NULL){
+        Nex = Curent->next;
+        Curent->next = Prev;
+        Prev = Curent;
+        Curent = Nex;
+    };
+
+    *Head = Prev;
+
+};
+void deleteMid_Note(Node **Head, int Target){
+    Node *Curent = *Head;
+    Node *Temp = NULL;
+    Node *Prev = NULL;
+
+    while(Curent->next != NULL){
+
+        if (Curent->data == Target){
+            Temp = Curent->next;
+        } else {
+            Curent = Curent->next;
+        };
+
+    };
+
+    *Head = Prev;
+};
+
+void deleteFirst_Node(Node **Head){
+    Node *Curent = *Head;
+    *Head = Curent->next;
+    free(Curent);
+    Curent = NULL;
+};
+
+void deleteLast_Node(Node **Head){
+    if (*Head == NULL) return;
+
+    Node *Current = *Head;
+    Node *Prev = NULL;
+
+    while(Current->next != NULL){
+        Prev = Current;
+        Current = Current->next;
+    }
+
+    if (Prev == NULL){
+        *Head = NULL;
+    } else {
+        Prev->next = NULL;
+    }
+
+    free(Current);
+    Current = NULL;
+    /*
+    Node *Curent = *Head;
+    Node *Nex = NULL;
+    while(Curent->next != NULL){
+        Curent = Curent->next;
+        Nex = Curent->next;
+        if (Nex->next == NULL){
+            Curent->next = NULL;
+            free(Nex);
+            Nex = NULL;
+        };
+    };
+    */
+};
+
+void deleteNode(Node **Head){
+    int Target = 3;
+    //deleteMid_Note(Head, Target);
+    //deleteFirst_Node(Head);
+    deleteLast_Node(Head);
+};
+
 int main (){
     Node *Head = NULL;
 
     inputNode(&Head);
     cekNode(&Head);
-    pisahNode(&Head);
+    deleteNode(&Head);
+    //pisahNode(&Head);
+    //insertNode(&Head);
+    //reverseNode(&Head);
     cekNode(&Head);
 
+
+    /* 
+    cekNode(&Head);
+    */
+    
 }
