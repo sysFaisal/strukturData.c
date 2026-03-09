@@ -2,26 +2,49 @@
   "version": "0.2.0",
   "configurations": [
     {
-      "name": "Debug C/C++ file (GDB)",
+      "name": "Make Debug",
       "type": "cppdbg",
       "request": "launch",
-      "preLaunchTask": "GLOBAL_UCRT_BUILD",
-      "program": "${fileDirname}/${fileBasenameNoExtension}.exe",
+      "program": "${workspaceFolder}/program.exe",
       "args": [],
       "stopAtEntry": true,
-      "cwd": "${fileDirname}",
-      "externalConsole": true,
-      "console": "integratedTerminal",
+      "cwd": "${workspaceFolder}",
       "environment": [],
+      "externalConsole": true,
       "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+      "preLaunchTask": "Run Makefile Debug",
+      "postDebugTask": "Clean Program",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
           "text": "-enable-pretty-printing",
           "ignoreFailures": true
         }
-      ]
+      ],
+    },
+    {
+    "name": "Make Launch",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/program.exe",
+      "args": [],
+      "stopAtEntry": false, // Anti Debug
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true, // Open Terminal
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:/msys64/ucrt64/bin/gdb.exe",
+      "preLaunchTask": "Run Makefile",
+      "postDebugTask": "Clean Program",
+      "logging": {
+        "engineLogging": false,
+        "programOutput": true,
+        "exceptions": false,
+        "moduleLoad": false,
+        "processExit": false,
+        "threadExit": false
+      },
     },
     {
       "name": "C/C++ Runner: Debug Session",
@@ -34,28 +57,6 @@
       "program": "e:/Faisal/4. Code/Teori/Struktur Data/build/Debug/outDebug",
       "MIMode": "gdb",
       "miDebuggerPath": "gdb",
-      "setupCommands": [
-        {
-          "description": "Enable pretty-printing for gdb",
-          "text": "-enable-pretty-printing",
-          "ignoreFailures": true
-        }
-      ]
-    },
-    {
-      "name": "Debug mjam.c",
-      "type": "cppdbg",
-      "request": "launch",
-      "preLaunchTask": "build program",
-      "program": "${workspaceFolder}/praktikum/1. Array/${fileBasenameNoExtension}.exe",
-      "args": [],
-      "stopAtEntry": true,
-      "cwd": "${workspaceFolder}/praktikum/1. Array",
-      "externalConsole": true,
-      "console": "integratedTerminal",
-      "environment": [],
-      "MIMode": "gdb",
-      "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

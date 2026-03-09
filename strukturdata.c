@@ -216,5 +216,7 @@ int main (){
     /* 
     cekNode(&Head);
     */
+    getchar();
+    getchar();
     
 }

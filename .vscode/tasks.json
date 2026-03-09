@@ -2,48 +2,26 @@
     "version": "2.0.0",
     "tasks": [
         {
-            "label": "build jam library",
+            "label": "Run Makefile",
             "type": "shell",
-            "command": "C:/msys64/ucrt64/bin/gcc.exe",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "-c",
-                "${workspaceFolder}/praktikum/1. Array/jam.c",
-                "-o",
-                "${workspaceFolder}/praktikum/1. Array/jam.o"
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": false
-            },
-            "detail": "Compile jam.c to object file (no main)."
+            "command": "mingw32-make",
+            "args": ["all"],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
         },
-
         {
-            "label": "build program",
+            "label": "Run Makefile Debug",
             "type": "shell",
-            "command": "C:/msys64/ucrt64/bin/gcc.exe",
-            "dependsOn": "build jam library",
-            "args": [
-                "-fdiagnostics-color=always",
-                "-g",
-                "${file}",
-                "${workspaceFolder}/praktikum/1. Array/jam.o",
-                "-o",
-                "${fileDirname}\\${fileBasenameNoExtension}.exe"
-            ],
-            "problemMatcher": [
-                "$gcc"
-            ],
-            "group": {
-                "kind": "build",
-                "isDefault": true
-            },
-            "detail": "Compile active file and link with jam.o (run this for mjam.c)."
+            "command": "mingw32-make",
+            "args": ["debug_build"],
+            "group": "build"
+        },
+        {
+            "label": "Clean Program",
+            "type": "shell",
+            "command": "mingw32-make",
+            "args": ["clean"],
+            "group": "build"
         }
     ]
 }

@@ -1,3 +1,5 @@
+#include "boolean.h"
+
 typedef struct{
     int x;
     int y;
