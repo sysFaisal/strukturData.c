@@ -41,6 +41,28 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "name": "Debug mjam.c",
+      "type": "cppdbg",
+      "request": "launch",
+      "preLaunchTask": "build program",
+      "program": "${workspaceFolder}/praktikum/1. Array/${fileBasenameNoExtension}.exe",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}/praktikum/1. Array",
+      "externalConsole": true,
+      "console": "integratedTerminal",
+      "environment": [],
+      "MIMode": "gdb",
+      "miDebuggerPath": "C:\\msys64\\ucrt64\\bin\\gdb.exe",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }
