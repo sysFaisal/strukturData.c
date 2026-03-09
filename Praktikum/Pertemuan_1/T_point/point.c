@@ -1,6 +1,7 @@
 #include "boolean.h"
-#include <point.h>
+#include "point.h"
 #include <math.h>
+#include <stdio.h>
 
 //Absis X
 //Ordinat Y

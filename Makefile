@@ -1,5 +1,5 @@
 # 1. Ganti nama folder di sini sesuai keinginan
-DIR = Praktikum/Pertemuan_1/T_jam
+DIR = Praktikum/Pertemuan_1/T_point
 
 CC = gcc
 # CFLAGS dasar
