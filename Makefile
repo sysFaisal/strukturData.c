@@ -1,5 +1,7 @@
 # 1. Ganti nama folder di sini sesuai keinginan
-DIR = Praktikum/Pertemuan_1/T_point
+
+DIR = Teori/Searching
+#DIR = Praktikum/Pertemuan_1/T_jam
 
 CC = gcc
 # CFLAGS dasar
