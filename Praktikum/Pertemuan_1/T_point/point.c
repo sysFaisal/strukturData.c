@@ -46,8 +46,46 @@ void BacaPOINT(POINT *p){
 };
 
 void CetakPOINT(POINT p){
-    printf("(X:%d , X:%d)",p.x, p.y);
+    printf("(X:%d , y:%d)",p.x, p.y);
 };
+
+boolean EQ (POINT p1, POINT p2){
+    if ((GetAbsis(p1) == GetAbsis(p2)) && (GetOrdinat(p1) == GetOrdinat(p2))){
+        return (true);
+    }
+    return (false);
+}
+
+boolean NEQ (POINT p1, POINT p2){
+    return (!EQ(p1, p2));
+}
+
+boolean LT (POINT p1, POINT p2){
+    if ((GetAbsis(p1)) < (GetAbsis(p2))){
+        return (true);
+
+    } else if 
+        ((GetAbsis(p1) == GetAbsis(p2) && GetOrdinat(p1) < GetOrdinat(p2))){
+        return (true);
+
+    } else {
+        return (false);
+    }
+
+} 
+
+boolean MT (POINT p1, POINT p2){
+    if ((GetAbsis(p1)) > (GetAbsis(p2))){
+        return (true);
+        
+    } else if 
+        ((GetAbsis(p1) == GetAbsis(p2) && GetOrdinat(p1) > GetOrdinat(p2))){
+        return (true);
+
+    } else {
+        return (false);
+    }
+}
 
 boolean IsOrigin(POINT p){
     if (GetAbsis(p) == 0 && GetOrdinat(p) == 0){
@@ -64,7 +102,7 @@ boolean IsOnSbx(POINT p){
 };
 
 boolean IsOnSby(POINT p){
-    if (GetOrdinat(p) == 0){
+    if (GetAbsis(p) == 0){
         return (true);
     }
     return false;
@@ -88,7 +126,21 @@ int Kuadran(POINT p) {
 };
 
 POINT MirrorOf(POINT p, boolean Sbx, boolean Sby){
+    POINT pnew;
+    float x = p.x;
+    float y = p.y;
 
+    if (Sbx == true){
+        y = (y * -1);
+    };
+
+    if (Sby == true){
+        x = (x * -1);
+    };
+
+    CreatePOINT2(&pnew, x, y);
+
+    return pnew;
 };
 
 float Jarak0(POINT p){
