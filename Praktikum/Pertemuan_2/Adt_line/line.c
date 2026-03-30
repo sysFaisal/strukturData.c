@@ -4,9 +4,9 @@
 #include <stdio.h>
 #include <conio.h>
 
-int GetGradient(Line L){
-    int x1, x2;
-    int y1, y2;
+float GetGradient(Line L){
+    float x1, x2;
+    float y1, y2;
 
     x1 = L.PAwal.x;
     x2 = L.PAkhir.x;
@@ -15,7 +15,7 @@ int GetGradient(Line L){
     y2 = L.PAkhir.y;
 
     if ((x2 - x1) == 0){
-        return -1;
+        return ErrGrad;
     }
 
     return (y2 - y1) / (x2 - x1);
@@ -27,11 +27,8 @@ void CreateLine (Line *L){
 };
 
 void CreateLINE2 (Line *L, POINT First, POINT End){
-    L->PAwal.x = First.x;
-    L->PAwal.y = First.y;
-
-    L->PAkhir.x = End.x;
-    L->PAkhir.y = End.y;
+    CreatePOINT2(&L->PAwal, First.x , First.y);
+    CreatePOINT2(&L->PAkhir, End.x , End.y);
 };
 
 
@@ -45,12 +42,13 @@ POINT GetPAkhir (Line L){
 
 
 void SetPAwal(Line *L, POINT newFirstP){
-    L->PAwal.x = newFirstP.x;
-    L->PAwal.y = newFirstP.y;
+    SetAbsis(&L->PAwal, newFirstP.x);
+    SetOrdinat(&L->PAwal, newFirstP.y);
+
 };
 void SetPAkhir (Line *L, POINT newEndP){
-    L->PAkhir.x = newEndP.x;
-    L->PAkhir.y = newEndP.y;
+    SetAbsis(&L->PAkhir, newEndP.x);
+    SetOrdinat(&L->PAkhir, newEndP.y);
 };
 
 void BacaLine (Line *L){
@@ -66,52 +64,47 @@ void CetakLine(Line L){
 };
 
 
-boolean IsEQLine(Line Ll, Line L2){
-    return EQ(Ll.PAwal, L2.PAwal);
+boolean IsEQLine(Line L1, Line L2){
+    return (EQ(L1.PAwal, L2.PAwal) && EQ(L1.PAkhir, L2.PAkhir));
 };
 
 boolean IsNEQLine(Line P1, Line P2){
-    return NEQ(P1.PAwal, P2.PAwal);
+    return (!IsEQLine(P1, P2));
 };
 
 
 boolean IsLOnSbX (Line L){
-    return (L.PAwal.x == L.PAkhir.x);
+    return (IsOnSbx(L.PAwal) && IsOnSbx(L.PAkhir));
 };
 
 boolean IsLOnSbY (Line L){
-    return (L.PAwal.y == L.PAkhir.y);
+    return (IsOnSby(L.PAwal) && IsOnSby(L.PAkhir));
 };
 
 
+boolean IsTegakLurus(Line L1, Line L2) {
+    float m1 = GetGradient(L1);
+    float m2 = GetGradient(L2);
 
-boolean IsTegakLurus(Line L1, Line L2){
-    int Gradient1 = GetGradient(L1);
-    int Gradient2 = GetGradient(L2);
-
-    if (Gradient1 * Gradient2 == -1) {
-        return true;
-    } else {
-        return false;
+    if ((m1 == ErrGrad && m2 == 0) || (m1 == 0 && m2 == ErrGrad)){
+        return (true);
     }
 
+    if (m1 * m2 < -0.99 && m1 * m2 > -1.01) {
+        return true;
+    }
+
+    return(false);
 };
 
 boolean IsSejajar(Line L1, Line L2){
-    int Gradient1 = GetGradient(L1);
-    int Gradient2 = GetGradient(L2);
-
-    if (Gradient1 == Gradient2) {
-        return true;
-    } else {
-        return false;
-    }
+    return (GetGradient(L1) == GetGradient(L2));
 };
 
 void GeserLine (Line *L, int deltaX, int deltaY){
-    L->PAwal.x = L->PAwal.x + deltaX;
-    L->PAwal.y = L->PAwal.y + deltaY;
+    SetAbsis(&L->PAwal, (L->PAwal.x + deltaX));
+    SetOrdinat(&L->PAwal, (L->PAwal.y + deltaY));
 
-    L->PAkhir.x = L->PAkhir.x + deltaX;
-    L->PAkhir.y = L->PAkhir.y + deltaY;
+    SetAbsis(&L->PAkhir, (L->PAkhir.x + deltaX));
+    SetOrdinat(&L->PAkhir, (L->PAkhir.y + deltaY));
 };

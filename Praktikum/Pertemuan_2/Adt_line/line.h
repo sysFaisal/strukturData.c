@@ -7,6 +7,7 @@
 
 #define FirstPoint(L) (L).PAwal
 #define EndPoint(L) (L).PAkhir
+#define ErrGrad 99990.0
 
 typedef struct {
     POINT PAwal; 
@@ -14,7 +15,7 @@ typedef struct {
 }Line;
 
 
-int GetGradient(Line L);
+float GetGradient(Line L);
 
 void CreateLine (Line *L);
 /* I.S : L terdefinisi, tidak diketahui nilainya
@@ -53,7 +54,7 @@ F.S : Menampilkan nilai Komponen L ke layar dg format “(P1(X1,Y1) ,
 P2(X2,Y2))
 */
 
-boolean IsEQLine(Line Ll, Line L2);
+boolean IsEQLine(Line L1, Line L2);
 // Mengirimkan true jika L1 = L2, yaitu:
 // jika titik awal dari L1 sama dengan titik awal dari L2 dan
 // titik akhir L1 sama titik akhir dari L2.
