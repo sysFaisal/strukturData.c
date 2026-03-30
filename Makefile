@@ -1,4 +1,4 @@
-DIR = Praktikum/Pertemuan_1/T_point
+DIR = Praktikum/Pertemuan_2/Adt_line
 
 CC = gcc
 
