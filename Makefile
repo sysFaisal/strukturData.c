@@ -1,4 +1,5 @@
-DIR = Praktikum/Pertemuan_2/Adt_line
+DIR = Teori/snake
+# DIR = Praktikum/Pertemuan_2/Adt_line
 
 CC = gcc
 
