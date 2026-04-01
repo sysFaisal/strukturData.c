@@ -10,7 +10,7 @@ void tambahMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
 
     for (i = 0; i < *jumlahMhs; i++){
         if (mhs[i].nim == nimtemp){
-            printf("Nim Tidak Boleh Sama");
+            printf("Nim Tidak Boleh Sama\n");
             return;
         };
     };

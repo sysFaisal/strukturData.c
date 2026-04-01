@@ -89,7 +89,7 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[],
         return;
     }
 
-    printf("No. Nim | Nama | Matkul | Nilai | Grade\n");
+    printf("\nNo. Nim | Nama | Matkul | Nilai | Grade\n");
     for (int i = 0; i < jumlahNilai; i++){
 
         int idxMhs = -1;
