@@ -1,5 +1,11 @@
 #include <stdio.h>
-#include "matakuliah.h"
+
+typedef struct {
+    char kode_mk[10];
+    char nama_mk[50];
+    int sks;
+    char pengajar[50];
+} MataKuliah;
 
 MataKuliah mk[100];
 int jumlahMk = 0;
