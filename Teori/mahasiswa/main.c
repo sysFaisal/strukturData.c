@@ -10,9 +10,9 @@ int main(){
     MatKul mk[MAX];
     Nilai nl[MAX * MAX];
 
-    int jumlahMhs = 0;
-    int jumlahMatkul = 0;
-    int jumlahNilai = 0;
+    int counterMhs = 0;
+    int counterMatkul = 0;
+    int counterNilai = 0;
     int pilih;
 
     do {
@@ -30,14 +30,14 @@ int main(){
         scanf("%d", &pilih);
 
         switch(pilih){
-            case 1: tambahMahasiswa(mhs, &jumlahMhs); break;
-            case 2: tampilMahasiswa(mhs, jumlahMhs); break;
-            case 3: editMahasiswa(mhs, jumlahMhs); break;
-            case 4: hapusMahasiswa(mhs, &jumlahMhs); break;
-            case 5: tambahMK(mk, &jumlahMatkul); break;
-            case 6: tampilMK(mk, jumlahMatkul); break;
-            case 7: tambahNilai(mk, nl, mhs, jumlahMatkul, &jumlahNilai, jumlahMhs); break;
-            case 8: tampilNilai(mk, nl, mhs, jumlahMatkul, jumlahNilai, jumlahMhs); break;
+            case 1: tambahMahasiswa(mhs, &counterMhs); break;
+            case 2: tampilMahasiswa(mhs, counterMhs); break;
+            case 3: editMahasiswa(mhs, counterMhs); break;
+            case 4: hapusMahasiswa(mhs, &counterMhs); break;
+            case 5: tambahMK(mk, &counterMatkul); break;
+            case 6: tampilMK(mk, counterMatkul); break;
+            case 7: tambahNilai(mk, nl, mhs, counterMatkul, &counterNilai, counterMhs); break;
+            case 8: tampilNilai(mk, nl, mhs, counterMatkul, counterNilai, counterMhs); break;
             case 0: printf("Keluar...\n"); break;
             default: printf("Pilihan tidak tersedia!\n");
         }
