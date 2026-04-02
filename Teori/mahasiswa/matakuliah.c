@@ -50,3 +50,36 @@ void tampilMK(MatKul mk[], int jumlahMatkul){
     };
     
 };
+
+void hapusMK(MatKul mk[], int *jumlahMatkul, Nilai nl[], int *jumlahNilai){
+
+    if (*jumlahMatkul == 0){
+        printf("Belum Ada Mata Kuliah!");
+        return;
+    };
+
+    int temp = *jumlahMatkul;
+    tampilMK(mk, temp);
+
+    int pilih;
+    printf("Masukan Mata Kuliah Yang Ingin Dihapus : "); scanf("%d", &pilih);
+
+    int idx = pilih - 1;
+
+    if (pilih < 1 || pilih > *jumlahMatkul){
+        printf("Pilihan tidak valid!\n");
+        return;
+    };
+
+    if (*jumlahNilai != 0){
+        hapusNilai_Mk(nl , jumlahNilai , mk[idx].IdMk);
+    };
+
+    for (int i = idx; i < *jumlahMatkul - 1; i++){
+        mk[i] = mk[i + 1];
+    };
+
+    *jumlahMatkul = *jumlahMatkul - 1;
+
+    printf("Data Mata Kuliah berhasil dihapus!\n");
+};

@@ -84,7 +84,7 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, in
     }
 
     if (jumlahNilai == 0){
-        printf("Belum Mengisi Nilai");
+        printf("Belum Mengisi Nilai\n");
         return;
     };
 
@@ -144,6 +144,21 @@ void hapusNilai_Nim(Nilai nl[], int *jumlahNilai, int targetNim){
 
     while (i < *jumlahNilai){
         if (nl[i].IdNim == targetNim){
+            geserNilai(nl, *jumlahNilai, i);
+            *jumlahNilai = *jumlahNilai - 1;
+            
+        } else {
+            i++;
+        }
+    }
+
+};
+
+void hapusNilai_Mk(Nilai nl[], int *jumlahNilai, int targetMk){
+    int i = 0;
+
+    while (i < *jumlahNilai){
+        if (nl[i].IdMk == targetMk){
             geserNilai(nl, *jumlahNilai, i);
             *jumlahNilai = *jumlahNilai - 1;
             

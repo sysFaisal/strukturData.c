@@ -23,8 +23,9 @@ int main(){
         printf("4. Hapus Mahasiswa\n");
         printf("5. Tambah MataKuliah\n");
         printf("6. Tampil Matakuliah\n");
-        printf("7. Tambah Nilai\n");
-        printf("8. Tampil Nilai\n");
+        printf("7. Hapus Matakuliah\n");
+        printf("8. Tambah Nilai\n");
+        printf("9. Tampil Nilai\n");
         printf("0. Keluar\n");
         printf("Pilih: ");
         scanf("%d", &pilih);
@@ -33,11 +34,12 @@ int main(){
             case 1: tambahMahasiswa(mhs, &counterMhs); break;
             case 2: tampilMahasiswa(mhs, counterMhs); break;
             case 3: editMahasiswa(mhs, counterMhs); break;
-            case 4: hapusMahasiswa(mhs, &counterMhs , nl, &counterNilai); break;
+            case 4: hapusMahasiswa(mhs, &counterMhs, nl, &counterNilai); break;
             case 5: tambahMK(mk, &counterMatkul); break;
             case 6: tampilMK(mk, counterMatkul); break;
-            case 7: tambahNilai(mk, nl, mhs, counterMatkul, &counterNilai, counterMhs); break;
-            case 8: tampilNilai(mk, nl, mhs, counterMatkul, counterNilai, counterMhs); break;
+            case 7: hapusMK(mk, &counterMatkul, nl, &counterNilai); break;
+            case 8: tambahNilai(mk, nl, mhs, counterMatkul, &counterNilai, counterMhs); break;
+            case 9: tampilNilai(mk, nl, mhs, counterMatkul, counterNilai, counterMhs); break;
             case 0: printf("Keluar...\n"); break;
             default: printf("Pilihan tidak tersedia!\n");
         }

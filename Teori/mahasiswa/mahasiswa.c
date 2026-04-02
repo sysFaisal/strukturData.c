@@ -87,8 +87,7 @@ void hapusMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs , Nilai nl[], int *jumlahNi
 
     tampilMahasiswa(mhs, *jumlahMhs);
 
-    printf("Pilih nomor mahasiswa yang ingin dihapus: ");
-    scanf("%d", &pilih);
+    printf("Pilih nomor mahasiswa yang ingin dihapus: "); scanf("%d", &pilih);
 
     if (pilih < 1 || pilih > *jumlahMhs){
         printf("Pilihan tidak valid!\n");
@@ -97,13 +96,15 @@ void hapusMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs , Nilai nl[], int *jumlahNi
 
     int idx = pilih - 1;
 
+    if (*jumlahNilai != 0){
+        hapusNilai_Nim(nl , jumlahNilai , mhs[idx].nim);
+    };
+
     for (int i = idx; i < *jumlahMhs - 1; i++){
         mhs[i] = mhs[i + 1];
     };
+    
+    *jumlahMhs = *jumlahMhs - 1;
 
-    hapusNilai_Nim(nl , jumlahNilai , mhs[idx].nim);
-
-    (*jumlahMhs)--;
-
-    printf("Data berhasil dihapus!\n");
+    printf("Data Mahasiswa berhasil dihapus!\n");
 };

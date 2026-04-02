@@ -9,5 +9,6 @@ char gradchar(float nilai);
 void tambahNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[] ,int jumlahMatkul, int *jumlahNilai, int jumlahMhs);
 void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, int jumlahNilai, int jumlahMhs);
 void hapusNilai_Nim(Nilai nl[], int *jumlahNilai, int targetNim);
+void hapusNilai_Mk(Nilai nl[], int *jumlahNilai, int targetMk);
 
 #endif
