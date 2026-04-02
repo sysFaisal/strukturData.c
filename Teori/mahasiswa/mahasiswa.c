@@ -4,7 +4,7 @@
 #include "mahasiswa.h"
 
 void tambahMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
-    int i, nimtemp, n = 3;
+    int i, nimtemp;
     
     printf("NIM: "); scanf("%d", &nimtemp);
 
@@ -22,7 +22,7 @@ void tambahMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
     printf("Kelas: "); scanf("%s", mhs[*jumlahMhs].kelas);
     (*jumlahMhs)++;
 
-    printf("%d Mahasiswa berhasil ditambahkan\n", n);
+    printf("Mahasiswa berhasil ditambahkan\n");
 };
 
 void tampilMahasiswa(Mahasiswa1 mhs[], int jumlahMhs){

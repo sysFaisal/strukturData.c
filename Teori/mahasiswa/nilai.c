@@ -43,7 +43,7 @@ void tambahNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[] ,int jumlahMatkul, in
     }
     
     tampilMK(mk, jumlahMatkul);
-    printf("\nPilih nomor Mata Kuliah : "); scanf("%d", &pilihMk);
+    printf("Pilih nomor Mata Kuliah : "); scanf("%d", &pilihMk);
 
     int idx2 = pilihMk - 1;
 
@@ -71,8 +71,7 @@ void tambahNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[] ,int jumlahMatkul, in
     *jumlahNilai = *jumlahNilai + 1;
 };
 
-void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[],
-    int jumlahMatkul, int jumlahNilai, int jumlahMhs){
+void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, int jumlahNilai, int jumlahMhs){
 
     if (jumlahMatkul == 0){
         printf("Mata Kuliah Belum Ada\n");
@@ -84,42 +83,49 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[],
         return;
     }
 
+    if (jumlahNilai == 0){
+        printf("Belum Mengisi Nilai");
+        return;
+    };
+
     if (jumlahNilai >= MAX * MAX){
         printf("Data nilai penuh!\n");
         return;
     }
 
-    printf("\nNo. Nim | Nama | Matkul | Nilai | Grade\n");
-    for (int i = 0; i < jumlahNilai; i++){
+    int flag, flag1, p, j, o;
+    int count = 0;
 
-        int idxMhs = -1;
-        int idxMk = -1;
+    printf("\nNo. Nim | Nama | Matkul | Nilai | Grade | Sks | Pengajar\n");
+    for (p = 0; p < jumlahMhs; p++){
 
-        // cari mahasiswa berdasarkan IdNim
-        for (int j = 0; j < jumlahMhs; j++){
-            if (nl[i].IdNim == mhs[j].nim){
-                idxMhs = j;
-                break;
-            }
-        }
+        for (j = 0; j < jumlahNilai; j++){
+            flag = -1; 
+            flag1 = -1;
 
-        // cari matkul berdasarkan IdMk
-        for (int k = 0; k < jumlahMatkul; k++){
-            if (nl[i].IdMk == mk[k].IdMk){
-                idxMk = k;
-                break;
-            }
-        }
+            if (nl[j].IdNim == mhs[p].nim){
+                flag = p;
 
-        if (idxMhs != -1 && idxMk != -1){
-            printf("%d. %d | %s | %s | %.2f | %c\n",
-                i + 1,
-                mhs[idxMhs].nim,
-                mhs[idxMhs].nama,
-                mk[idxMk].nama_mk,
-                nl[i].nilai_angka,
-                nl[i].nilai_huruf
-            );
-        }
-    }
+                for (o = 0; o < jumlahMatkul; o++){
+                    if (nl[j].IdMk == mk[o].IdMk){
+                        flag1 = o;
+                        break;
+                    };
+                };
+
+                if (flag != -1 && flag1 != -1){
+                    printf("%d. %d | %s | %s | %.2f | %c | %d | %s\n",
+                    count + 1,
+                    mhs[flag].nim,
+                    mhs[flag].nama,
+                    mk[flag1].nama_mk,
+                    nl[j].nilai_angka,
+                    nl[j].nilai_huruf,
+                    mk[flag1].sks, 
+                    mk[flag1].pengajar 
+                    );
+                }; 
+            };
+        };
+    };
 }

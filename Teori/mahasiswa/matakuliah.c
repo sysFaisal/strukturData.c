@@ -13,6 +13,7 @@ typedef struct {
 
 void tambahMK(MatKul mk[], int *jumlahMatkul){
     char fix;
+
     do {
         if (*jumlahMatkul >= MAX){
             printf("Data penuh!\n");
@@ -30,14 +31,18 @@ void tambahMK(MatKul mk[], int *jumlahMatkul){
 
         printf("Lanjutkan ? y/n : "); scanf(" %c", &fix); 
     } while (fix == 'y');
+
 };
 
 void tampilMK(MatKul mk[], int jumlahMatkul){
+
     if (jumlahMatkul == 0){
         printf("Tidak ada matakuliah.\n");
         return;
     }
+
     int i;
+
     printf("\n=== Data MataKuliah ===\n");
     printf("No. idMk | Kode_Mk | Nama_Mk | Dosen | Sks\n");
     for ( i = 0; i < jumlahMatkul; i++){
@@ -49,5 +54,6 @@ void tampilMK(MatKul mk[], int jumlahMatkul){
             mk[i].pengajar,
             mk[i].sks
         );
-    }
+    };
+    
 };
