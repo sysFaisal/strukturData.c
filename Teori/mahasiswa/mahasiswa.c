@@ -2,6 +2,7 @@
 #include <string.h>
 #include "globalvar.h"
 #include "mahasiswa.h"
+#include "nilai.h"
 
 void tambahMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
     int i, nimtemp;
@@ -76,7 +77,7 @@ void editMahasiswa(Mahasiswa1 mhs[], int jumlahMhs){
     printf("Data berhasil diubah!\n");
 };
 
-void hapusMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
+void hapusMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs , Nilai nl[], int *jumlahNilai){
     int pilih;
 
     if (*jumlahMhs == 0){
@@ -98,7 +99,9 @@ void hapusMahasiswa(Mahasiswa1 mhs[], int *jumlahMhs){
 
     for (int i = idx; i < *jumlahMhs - 1; i++){
         mhs[i] = mhs[i + 1];
-    }
+    };
+
+    hapusNilai_Nim(nl , jumlahNilai , mhs[idx].nim);
 
     (*jumlahMhs)--;
 

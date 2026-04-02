@@ -129,3 +129,42 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, in
         };
     };
 }
+
+void geserNilai(Nilai nl[], int jumlahNilai , int idx){
+    int i;
+
+    for (i = idx; i < jumlahNilai - 1; i++){
+        nl[i] = nl[i + 1];
+    };
+
+};
+
+void hapusNilai_Nim(Nilai nl[], int *jumlahNilai, int targetNim){
+    int i = 0;
+
+    while (i < *jumlahNilai){
+        if (nl[i].IdNim == targetNim){
+            geserNilai(nl, *jumlahNilai, i);
+            *jumlahNilai = *jumlahNilai - 1;
+            
+        } else {
+            i++;
+        }
+    }
+
+};
+
+void hapusNilai_Mat(Nilai nl[], int *jumlahNilai, int targetMk){
+    int i = 0;
+
+    while (i < *jumlahNilai){
+        if (nl[i].IdMk == targetMk){
+            geserNilai(nl, *jumlahNilai, i);
+            *jumlahNilai = *jumlahNilai - 1;
+            
+        } else {
+            i++;
+        }
+    }
+
+};

@@ -3,13 +3,6 @@
 #include "globalvar.h"
 #include "mahasiswa.h"
 
-typedef struct {
-    int IdMk;
-    char kode_mk[10];
-    char nama_mk[50];
-    int sks;
-    char pengajar[50];
-} MatKul;
 
 void tambahMK(MatKul mk[], int *jumlahMatkul){
     char fix;

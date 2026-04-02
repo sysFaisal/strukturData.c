@@ -33,7 +33,7 @@ int main(){
             case 1: tambahMahasiswa(mhs, &counterMhs); break;
             case 2: tampilMahasiswa(mhs, counterMhs); break;
             case 3: editMahasiswa(mhs, counterMhs); break;
-            case 4: hapusMahasiswa(mhs, &counterMhs); break;
+            case 4: hapusMahasiswa(mhs, &counterMhs , nl, &counterNilai); break;
             case 5: tambahMK(mk, &counterMatkul); break;
             case 6: tampilMK(mk, counterMatkul); break;
             case 7: tambahNilai(mk, nl, mhs, counterMatkul, &counterNilai, counterMhs); break;
