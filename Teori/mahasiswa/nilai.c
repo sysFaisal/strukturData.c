@@ -153,18 +153,3 @@ void hapusNilai_Nim(Nilai nl[], int *jumlahNilai, int targetNim){
     }
 
 };
-
-void hapusNilai_Mat(Nilai nl[], int *jumlahNilai, int targetMk){
-    int i = 0;
-
-    while (i < *jumlahNilai){
-        if (nl[i].IdMk == targetMk){
-            geserNilai(nl, *jumlahNilai, i);
-            *jumlahNilai = *jumlahNilai - 1;
-            
-        } else {
-            i++;
-        }
-    }
-
-};
