@@ -69,6 +69,7 @@ void tambahNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[] ,int jumlahMatkul, in
     nl[*jumlahNilai].nilai_huruf = gradchar(nl[*jumlahNilai].nilai_angka);
 
     *jumlahNilai = *jumlahNilai + 1;
+    printf("Nilai Telah Ditambahkan");
 };
 
 void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, int jumlahNilai, int jumlahMhs){
@@ -95,8 +96,10 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, in
 
     int flag, flag1, p, j, o;
     int count = 0;
-
-    printf("\nNo. Nim | Nama | Matkul | Nilai | Grade | Sks | Pengajar\n");
+    printf("\n");
+    printf("-- Daftar Nilai -----------------------------------------------------------------------------\n");
+    printf("%-5s %-12s %-20s %-20s %-8s %-8s %-5s %-20s\n",
+       "No.", "NIM", "Nama", "Matkul", "Nilai", "Grade", "Sks", "Pengajar");
     for (p = 0; p < jumlahMhs; p++){
 
         for (j = 0; j < jumlahNilai; j++){
@@ -114,20 +117,22 @@ void tampilNilai(MatKul mk[], Nilai nl[], Mahasiswa1 mhs[], int jumlahMatkul, in
                 };
 
                 if (flag != -1 && flag1 != -1){
-                    printf("%d. %d | %s | %s | %.2f | %c | %d | %s\n",
-                    count + 1,
-                    mhs[flag].nim,
-                    mhs[flag].nama,
-                    mk[flag1].nama_mk,
-                    nl[j].nilai_angka,
-                    nl[j].nilai_huruf,
-                    mk[flag1].sks, 
-                    mk[flag1].pengajar 
+                    printf("%-5d %-12d %-20s %-20s %-8.2f %-8c %-5d %-20s\n",
+                        count + 1,
+                        mhs[flag].nim,
+                        mhs[flag].nama,
+                        mk[flag1].nama_mk,
+                        nl[j].nilai_angka,
+                        nl[j].nilai_huruf,
+                        mk[flag1].sks, 
+                        mk[flag1].pengajar 
                     );
                 }; 
             };
         };
     };
+    printf("---------------------------------------------------------------------------------------------\n");
+
 }
 
 void geserNilai(Nilai nl[], int jumlahNilai , int idx){

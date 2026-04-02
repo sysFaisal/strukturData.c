@@ -36,10 +36,11 @@ void tampilMK(MatKul mk[], int jumlahMatkul){
 
     int i;
 
-    printf("\n=== Data MataKuliah ===\n");
-    printf("No. idMk | Kode_Mk | Nama_Mk | Dosen | Sks\n");
+    printf("\n-- Data MataKuliah -----------------------------------------------------------\n");
+    printf("%-5s %-8s %-12s %-25s %-20s %-5s\n",
+       "No.", "IdMk", "Kode_Mk", "Nama_Mk", "Dosen", "Sks");
     for ( i = 0; i < jumlahMatkul; i++){
-        printf("%d. %d | %s | %s | %s | %d \n",
+        printf("%-5d %-8d %-12s %-25s %-20s %-5d\n",
             i + 1,
             mk[i].IdMk,
             mk[i].kode_mk,
@@ -48,7 +49,32 @@ void tampilMK(MatKul mk[], int jumlahMatkul){
             mk[i].sks
         );
     };
-    
+    printf("------------------------------------------------------------------------------\n");
+
+};
+
+void editMK(MatKul mk[], int jumlahMatkul){
+    if (jumlahMatkul == 0){
+        printf("Tidak ada Mata Kuliah.\n");
+        return;
+    }
+    int pilih;
+
+    tampilMK(mk, jumlahMatkul);
+    printf("Pilih Mata Kuliah yang ingin diubah : "); scanf("%d", &pilih);
+
+    if (pilih < 1 || pilih > jumlahMatkul){
+        printf("Pilihan tidak valid!\n");
+        return;
+    };
+
+    int idx = pilih - 1;
+
+    printf("\n=== Edit Mata Kuliah ===\n");
+    printf("Kode Mata Kuliah : "); scanf("%s", mk[idx].kode_mk);
+    printf("Nama Mata Kuliah : "); scanf("%s", mk[idx].nama_mk);
+    printf("Sks Mata Kuliah : "); scanf("%d", &mk[idx].sks);
+    printf("Pengajar Mata Kuliah : "); scanf("%s", mk[idx].pengajar);
 };
 
 void hapusMK(MatKul mk[], int *jumlahMatkul, Nilai nl[], int *jumlahNilai){

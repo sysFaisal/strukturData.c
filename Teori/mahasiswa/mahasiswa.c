@@ -32,10 +32,12 @@ void tampilMahasiswa(Mahasiswa1 mhs[], int jumlahMhs){
         return;
     }
 
-    printf("\n=== Data Mahasiswa ===\n");
-    printf("No | Nim | Nama | Jurusan | Gender | Kelas\n");
+    printf("\n-- Data Mahasiswa --------------------------------------------------------\n");
+    printf("%-5s %-12s %-20s %-15s %-12s %-8s\n", 
+        "No", "Nim", "Nama", "Jurusan", "Gender", "Kelas"
+    );
     for (int i = 0; i < jumlahMhs; i++){
-        printf("%d. %d | %s | %s | %s | %s\n",
+        printf("%-5d %-12d %-20s %-15s %-12s %-8s\n",
             i + 1,
             mhs[i].nim,
             mhs[i].nama,
@@ -43,7 +45,8 @@ void tampilMahasiswa(Mahasiswa1 mhs[], int jumlahMhs){
             mhs[i].jenis_kelamin,
             mhs[i].kelas
         );
-    }
+    };
+    printf("--------------------------------------------------------------------------\n");
 
 };
 
