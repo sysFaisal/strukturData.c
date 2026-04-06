@@ -1,3 +1,10 @@
+/* Program : tabint.h
+Author : 2550081098, Faisal Fajari
+Kelas :
+Deskripsi: Body file dari prototype Tab Integer
+Tanggal :
+*/
+
 #include <stdio.h>
 #include "boolean.h"
 #include "tabint.h"
