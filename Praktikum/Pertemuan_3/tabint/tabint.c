@@ -1,4 +1,4 @@
-/* Program : tabint.h
+/* Program : tabint.c
 Author : 2550081098, Faisal Fajari
 Kelas :
 Deskripsi: Body file dari prototype Tab Integer

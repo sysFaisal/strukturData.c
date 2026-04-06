@@ -1,4 +1,4 @@
-/* Program : tabint.h
+/* Program : main.c
 Author : 2550081098, Faisal Fajari
 Kelas :
 Deskripsi: Main driver dari prototype Tab Integer

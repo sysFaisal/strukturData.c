@@ -1,4 +1,4 @@
-/* Program : tabint.h
+/* Program : boolean.h
 Author : 2550081098, Faisal Fajari
 Kelas :
 Deskripsi: Header file dari prototype Boolean
