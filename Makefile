@@ -1,5 +1,5 @@
-DIR = Teori/mahasiswa
-# DIR = Praktikum/Pertemuan_2/Adt_line
+# DIR = Teori/mahasiswa
+DIR = Praktikum/Pertemuan_3/tabint
 
 CC = gcc
 

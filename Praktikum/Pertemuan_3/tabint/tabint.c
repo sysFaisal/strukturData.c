@@ -68,16 +68,18 @@ boolean IsFull(TabInt T){
 void BacaElmt (TabInt *T){
     if (!(T->nEff >= nMax)){
         T->nEff = T->nEff + 1;
-        printf("\nMasukan nilai elemen baru : ");
+        printf("Masukan nilai elemen baru : ");
         scanf("%d", &T->T1[T->nEff]);
     };
 };
 
 void CetakTabInt(TabInt T){
     int i;
+    printf("|");
     for (i = 1; i <= T.nEff; i++){
-        printf("%d\n", T.T1[i]);
+        printf(" %d |", T.T1[i]);
     };
+    printf("\n");
 };
 
 void AddElmt(TabInt *T, int X){
@@ -166,7 +168,7 @@ int cariElemen(TabInt T, ElType X){
     for (i = 1; i <= T.nEff; i++){
         if (T.T1[i] == X){
             return i;
-        };
-    };
+        }
+    }
     return IdxUndef;
 };
