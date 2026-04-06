@@ -1,8 +1,8 @@
 /* Program : main.c
 Author : 2550081098, Faisal Fajari
-Kelas :
+Kelas : E
 Deskripsi: Main driver dari prototype Tab Integer
-Tanggal :
+Tanggal : 07/04/2026
 */
 #include <stdio.h>
 #include "tabint.h"

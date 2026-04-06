@@ -1,8 +1,8 @@
 /* Program : tabint.c
 Author : 2550081098, Faisal Fajari
-Kelas :
+Kelas : E
 Deskripsi: Body file dari prototype Tab Integer
-Tanggal :
+Tanggal : 06/04/2026
 */
 
 #include <stdio.h>

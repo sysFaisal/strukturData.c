@@ -1,8 +1,8 @@
 /* Program : boolean.h
 Author : 2550081098, Faisal Fajari
-Kelas :
+Kelas : E
 Deskripsi: Header file dari prototype Boolean
-Tanggal :
+Tanggal : 06/04/2026
 */
 #ifndef boolean_H
 #define boolean_H
