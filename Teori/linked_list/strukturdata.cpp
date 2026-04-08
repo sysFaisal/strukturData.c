@@ -102,15 +102,54 @@ void deleteLastNode(SLL *L){
 
     Temp1->Next = nullptr;
     free(Temp);
+    Temp = NULL;
+};
+
+int cariNode(SLL *L, int target){
+    int counter = 0;
+    Node *Temp = L->first;
+
+    while (Temp->Next != nullptr){
+        counter = counter + 1;
+        if (Temp->data == target){
+            return counter;
+        };
+        Temp = Temp->Next;
+    };
+
+    counter = counter + 1;
+    if (Temp->data == target){
+        return counter;
+    };
+
+    return 0;
 
 };
 
+void cetakNode(SLL *L){
+    Node *Temp = L->first;
+    while(Temp->Next != nullptr){
+        printf("%d -> ", Temp->data);
+        Temp = Temp->Next;
+    };
+    printf("%d -> ", Temp->data);
+};
+
 int main(){
+
     SLL *L = initNode();
-    insertLastNode(L, 2);
-    insertFirstNode(L, 1);
-    deleteLastNode(L);
-    printf("Size List : %d", sizeListNode(L));
+    insertLastNode(L, 1);
+    insertFirstNode(L, 2);
+    insertFirstNode(L, 3);
+    insertFirstNode(L, 4);
+    insertFirstNode(L, 5);
+    insertFirstNode(L, 6);
+
+    if (cariNode(L,7)){
+        printf("Ada di Node : %d\n", cariNode(L,4));
+    };
+    printf("Size List : %d\n", sizeListNode(L));
+
 
     getchar();
     getchar();
