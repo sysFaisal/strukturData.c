@@ -1,11 +1,13 @@
-# DIR = Teori/linked_list
+DIR = Teori/linked_list
 # DIR = Praktikum/Pertemuan_3/tabint
-DIR = Nyoba/linked_list
+# DIR = Nyoba/linked_list
 
-CC = gcc
+CC = g++
+# CC = gcc
 
 # CFLAGS dasar
-CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c11 -O2
+CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c++17 -O2
+# CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c11 -O2
 
 # Flag khusus untuk debug mode
 DEBUG_FLAGS = -g -O0
@@ -14,7 +16,8 @@ DEBUG_FLAGS = -g -O0
 LDFLAGS = -lm -static-libgcc
 
 # Mengambil semua file .c dari folder yang ditentukan
-SRC = $(wildcard $(DIR)/*.c)
+# SRC = $(wildcard $(DIR)/*.c)
+SRC = $(wildcard $(DIR)/*.cpp)
 
 # Nama file eksekusi (output)
 TARGET = program.exe

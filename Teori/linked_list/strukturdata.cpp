@@ -1,6 +1,7 @@
 #include <iostream>
 #include <stdlib.h>
 #include <string.h>
+#include <stdio.h>
 
 struct Node{
     int data;
@@ -12,7 +13,9 @@ struct SLL{
 };
 
 SLL* initNode(){
-    return new SLL;
+    SLL *L = new SLL;
+    L->first = nullptr;
+    return L;
 };
 
 Node *addNode(int dat){
@@ -22,15 +25,98 @@ Node *addNode(int dat){
     return New;
 };
 
-void insertLastNode(SLL *L){
-    
+void insertLastNode(SLL *L, int data){
+    if (L == NULL){
+        L = initNode();
+    };
+
+    Node *New = addNode(data);
+
+    if (L->first == NULL){
+        L->first = New;
+        return;
+    };
+
+    Node *Temp = L->first;
+
+    while(Temp->Next != nullptr){
+        Temp = Temp->Next;
+    };
+
+    Temp->Next = New;
 };
 
+void insertFirstNode(SLL *L, int data){
+    if (L == NULL){
+        L = initNode();
+    };
 
+    Node *New = addNode(data);
+
+    if (L->first == NULL){
+        L->first = New;
+        return;
+    };
+
+    Node *Temp = L->first;
+    New->Next = L->first;
+    L->first = New;
+};
+
+int sizeListNode(SLL *L){
+    int counter = 0;
+    if (L == NULL){
+        return counter;
+    };
+
+    if (L->first == nullptr){
+        return counter;
+    };
+
+    Node *Temp = L->first;
+    while (Temp->Next != nullptr){
+        counter = counter + 1;
+        Temp = Temp->Next;
+    };
+    counter = counter + 1;
+
+    return counter;
+};
+
+void deleteLastNode(SLL *L){
+    if (L == NULL){
+        return;
+    };
+
+    if (L->first == nullptr){
+        return;
+    };
+
+    Node *Temp = L->first;
+    Node *Temp1 = nullptr;
+
+    while(Temp->Next != nullptr){
+        Temp1 = Temp;
+        Temp = Temp->Next;     
+    };
+
+    Temp1->Next = nullptr;
+    free(Temp);
+
+};
 
 int main(){
+    SLL *L = initNode();
+    insertLastNode(L, 2);
+    insertFirstNode(L, 1);
+    deleteLastNode(L);
+    printf("Size List : %d", sizeListNode(L));
 
+    getchar();
+    getchar();
 };
+
+
 /*
 typedef struct Node {
     int data;
