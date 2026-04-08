@@ -1,5 +1,6 @@
-# DIR = Teori/mahasiswa
-DIR = Praktikum/Pertemuan_3/tabint
+# DIR = Teori/linked_list
+# DIR = Praktikum/Pertemuan_3/tabint
+DIR = Nyoba/linked_list
 
 CC = gcc
 

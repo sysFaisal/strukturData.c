@@ -58,13 +58,14 @@ void inputNode(Node **Head){
     char *list = "12345";
     printf("Total Lenght = %lld\n", strlen(list));
     char temp[2];
-
-    for (int i = 0; i < strlen(list); i++){
+    int lengthlist2 = strlen(list);
+    
+    for (int i = 0; i < lengthlist2 ; i++){
         temp[0] = list[i];
         temp[1] = '\0';
         printf("%d ", atoi(temp));
-
-        if (i == strlen(list) - 1 ){
+        int lengthlist =  strlen(list);
+        if (i == lengthlist - 1 ){
             printf("\n");
         }
         insertLast_Node(Head, atoi(temp));
