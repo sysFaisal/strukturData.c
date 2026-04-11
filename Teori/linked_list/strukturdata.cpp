@@ -144,7 +144,7 @@ int main(){
     insertFirstNode(L, 4);
     insertFirstNode(L, 5);
     insertFirstNode(L, 6);
-
+    cetakNode(L);
     if (cariNode(L,7)){
         printf("Ada di Node : %d\n", cariNode(L,4));
     };
@@ -197,7 +197,7 @@ int main(){
     Head->init();
     Head->InsertLastNode(1);
     Head->InsertLastNode(20);    
-     /*
+    
     CreateList(); Menciptakan First
     AddFirst(); Menambahkan Element di awal
     Addlast

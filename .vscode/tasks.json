@@ -17,11 +17,26 @@
             "group": "build"
         },
         {
+            "label": "Run Makefile Linux",
+            "type": "shell",
+            "command": "make",
+            "args": ["all"],
+            "group": "build",
+            "problemMatcher": ["$gcc"],
+        },
+        {
+            "label": "Run Makefile Linux Debug",
+            "type": "shell",
+            "command": "make",
+            "args": ["debug_build"],
+            "group": "build"
+        },
+        {
             "label": "Clean Program",
             "type": "shell",
-            "command": "mingw32-make",
+            "command": "make",
             "args": ["clean"],
             "group": "build"
-        }
+        },
     ]
 }

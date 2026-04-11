@@ -64,6 +64,51 @@
           "ignoreFailures": true
         }
       ]
+    },
+    {
+      "name": "Make Debug Linux",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/program",
+      "args": [],
+      "stopAtEntry": true,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "showDisplayString": true,
+      "preLaunchTask": "Run Makefile Linux Debug",
+      "postDebugTask": "Clean Program",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
+    },
+    {
+      "name": "Make Launch Linux",
+      "type": "cppdbg",
+      "request": "launch",
+      "program": "${workspaceFolder}/program",
+      "args": [],
+      "stopAtEntry": false,
+      "cwd": "${workspaceFolder}",
+      "environment": [],
+      "externalConsole": true,
+      "MIMode": "gdb",
+      "miDebuggerPath": "/usr/bin/gdb",
+      "preLaunchTask": "Run Makefile Linux",
+      "postDebugTask": "Clean Program",
+      "setupCommands": [
+        {
+          "description": "Enable pretty-printing for gdb",
+          "text": "-enable-pretty-printing",
+          "ignoreFailures": true
+        }
+      ]
     }
   ]
 }
