@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <stdio.h>
+#include <string.h>
 
 struct Node{
     int data;
@@ -29,10 +30,6 @@ Node* addNode(int data){
 
 void insertLastNode(DLL *L, int data){
 
-    if (L == NULL){
-        L = initDLL();
-    };
-
     Node *New = addNode(data);
 
     if (L->first == NULL){
@@ -53,9 +50,6 @@ void insertLastNode(DLL *L, int data){
 
 void insertFirstNode(DLL *L, int data){
 
-    if (L == NULL){
-        L = initDLL();
-    };
 
     Node *New = addNode(data);
 
@@ -106,9 +100,6 @@ void cetakPrevNode(DLL *L){
 
 int sizeListNode(DLL *L){
     int counter = 0;
-    if (L == NULL){
-        return counter;
-    };
 
     if (L->first == nullptr){
         return counter;
@@ -125,9 +116,6 @@ int sizeListNode(DLL *L){
 };
 
 void deleteLastNode(DLL *L){
-    if (L == NULL){
-        return;
-    };
 
     if (L->first == nullptr){
         return;
@@ -147,10 +135,8 @@ void deleteLastNode(DLL *L){
     Temp = NULL;
     
 };
+
 void deleteFirstNode(DLL *L){
-    if (L == NULL){
-        return;
-    };
 
     if (L->first == nullptr){
         return;
@@ -159,20 +145,101 @@ void deleteFirstNode(DLL *L){
     Node *Temp = L->first;
     Node *Temp1 = nullptr;
 
-    Temp1->Next = Temp->Next;
-    Temp->Next->Prev = nullptr;
+    Temp1 = Temp->Next;
+    Temp1->Prev = nullptr;
+    Temp->Next = nullptr;
+    L->first = Temp1;
     free(Temp);
     Temp = NULL;
 };
 
+void deleteTargetNode(DLL *L, int data){
+
+    if (L->first == nullptr){
+        return;
+    };
+
+    Node *Temp = L->first;
+
+    if (Temp->data == data){
+        deleteFirstNode(L);
+        return;
+    };
+
+    while((Temp != nullptr)){
+        if (Temp->data == data){
+
+            if (Temp->Next == nullptr){
+                deleteLastNode(L);
+                return;
+            };
+
+            Temp->Prev->Next = Temp->Next;
+            Temp->Next->Prev = Temp->Prev;
+            Temp->Next = nullptr;
+            Temp->Prev = nullptr;
+
+            free(Temp);
+            Temp = NULL;
+            return;
+        };
+        Temp = Temp->Next;
+    };
+
+    printf("Tidak ada data dengan data %d\n", data);
+};
+
+void insertTargetNode(DLL *L, int data, int position){
+
+    if (L->first == nullptr){
+        insertFirstNode(L, data);
+        return;
+    };
+
+    Node *Temp = L->first;
+    int counter = 0;
+
+    if (position <= 0){
+        return;
+    };
+
+    if (position == 1){
+        insertFirstNode(L, data);
+        return;
+    };
+
+    while(Temp != nullptr){
+
+        counter = counter + 1;
+        if (position == counter){
+
+            Node *New = addNode(data);
+
+            New->Prev = Temp->Prev; 
+            New->Next = Temp;
+            New->Prev->Next = New;
+            New->Next->Prev = New;
+            
+            return;
+        };
+        Temp = Temp->Next;
+
+    };
+
+    if (position > counter){
+        insertLastNode(L, data);
+        return;
+    };
+};
+
 int main(){
     DLL *L = initDLL();
+    insertLastNode(L, 1);
     insertLastNode(L, 2);
     insertLastNode(L, 3);
-    insertFirstNode(L, 1);
-    insertFirstNode(L, 0);
     insertLastNode(L, 4);
-    deleteLastNode(L);
+    insertLastNode(L, 5);
+    insertTargetNode(L, 5, 6);
     cetakNextNode(L);
     cetakPrevNode(L);
     printf("Size List : %d\n", sizeListNode(L));
