@@ -79,7 +79,7 @@
       "miDebuggerPath": "/usr/bin/gdb",
       "showDisplayString": true,
       "preLaunchTask": "Run Makefile Linux Debug",
-      "postDebugTask": "Clean Program",
+      "postDebugTask": "Clean Program Linux",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",
@@ -101,7 +101,7 @@
       "MIMode": "gdb",
       "miDebuggerPath": "/usr/bin/gdb",
       "preLaunchTask": "Run Makefile Linux",
-      "postDebugTask": "Clean Program",
+      "postDebugTask": "Clean Program Linux",
       "setupCommands": [
         {
           "description": "Enable pretty-printing for gdb",

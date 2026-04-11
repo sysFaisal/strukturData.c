@@ -32,9 +32,16 @@
             "group": "build"
         },
         {
-            "label": "Clean Program",
+            "label": "Clean Program Linux",
             "type": "shell",
             "command": "make",
+            "args": ["clean"],
+            "group": "build"
+        },
+        {
+            "label": "Clean Program",
+            "type": "shell",
+            "command": "mingw32-make",
             "args": ["clean"],
             "group": "build"
         },

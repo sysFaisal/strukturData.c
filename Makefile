@@ -1,4 +1,4 @@
-# Linux
+# Windows
 
 DIR = Teori/d_link_list
 # DIR = Praktikum/Pertemuan_3/tabint
@@ -14,20 +14,20 @@ CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c++17 -O2
 # Flag khusus untuk debug mode
 DEBUG_FLAGS = -g -O0
 
-# Flag Linker (Math library)
-LDFLAGS = -lm
+# Flag Linker (Math library & Portabilitas UCRT)
+LDFLAGS = -lm -static-libgcc
 
 # Mengambil semua file .c dari folder yang ditentukan
 # SRC = $(wildcard $(DIR)/*.c)
 SRC = $(wildcard $(DIR)/*.cpp)
 
 # Nama file eksekusi (output)
-TARGET = program
+TARGET = program.exe
 
 all:
-	@echo "Menyusun file rilis dari: $(DIR)"
+	@echo "Menyusun file rilis dengan optimasi UCRT dari: $(DIR)"
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
-	@echo "Selesai! Program siap dijalankan."
+	@echo "Selesai! Program siap dijalankan dengan cepat."
 
 debug_build:
 	@echo "Menyusun file mode DEBUG..."
@@ -35,5 +35,5 @@ debug_build:
 	@echo "Selesai! Siap untuk debugging."
 
 clean:
-	@rm -f $(TARGET)
+	@if exist $(TARGET) del $(TARGET)
 	@echo "File eksekusi berhasil dihapus."
