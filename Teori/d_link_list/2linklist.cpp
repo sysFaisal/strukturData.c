@@ -305,6 +305,4 @@ int main(){
     cetakPrevNode(L);
     printf("Size List : %d\n", sizeListNode(L));
 
-    getchar();
-    getchar();
 };
