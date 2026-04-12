@@ -271,7 +271,26 @@ void reverseList(DLL *L) {
     if (Temp != NULL) {
         L->first = Temp->Prev;
     }
-}
+};
+
+void updateNode(DLL *L, int data, int position) {
+    if (L->first == NULL) {
+        return;
+    };
+
+    Node *Temp = L->first;
+    int counter = 1;
+
+    while (Temp != NULL) {
+        if (counter == position) {
+            Temp->data = data;
+            return;
+        };
+        counter = counter + 1;
+        Temp = Temp->Next;
+    };
+    printf("Posisi tidak Sesuai %d\n", position);
+};  
 
 int main(){
     DLL *L = initDLL();
@@ -279,11 +298,9 @@ int main(){
     insertLastNode(L, 2);
     insertLastNode(L, 3);
     insertLastNode(L, 4);
-    insertLastNode(L, 6);
+    insertLastNode(L, 7);
     insertTargetNode(L, 5, 5);
-    cetakNextNode(L);
-    cetakPrevNode(L);
-    reverseList(L);
+    updateNode(L, 6, 6);
     cetakNextNode(L);
     cetakPrevNode(L);
     printf("Size List : %d\n", sizeListNode(L));
