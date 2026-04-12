@@ -64,6 +64,49 @@ void insertFirstNode(DLL *L, int data){
 
 };
 
+void insertTargetNode(DLL *L, int data, int position){
+
+    if (L->first == nullptr){
+        insertFirstNode(L, data);
+        return;
+    };
+
+    Node *Temp = L->first;
+    int counter = 0;
+
+    if (position <= 0){
+        return;
+    };
+
+    if (position == 1){
+        insertFirstNode(L, data);
+        return;
+    };
+
+    while(Temp != nullptr){
+
+        counter = counter + 1;
+        if (position == counter){
+
+            Node *New = addNode(data);
+
+            New->Prev = Temp->Prev; 
+            New->Next = Temp;
+            New->Prev->Next = New;
+            New->Next->Prev = New;
+            
+            return;
+        };
+        Temp = Temp->Next;
+
+    };
+
+    if (position > counter){
+        insertLastNode(L, data);
+        return;
+    };
+};
+
 void cetakNextNode(DLL *L){
 
     if (L->first == NULL){
@@ -153,7 +196,7 @@ void deleteFirstNode(DLL *L){
     Temp = NULL;
 };
 
-void deleteTargetNode(DLL *L, int data){
+void deleteTargetNode(DLL *L, int target){
 
     if (L->first == nullptr){
         return;
@@ -161,13 +204,13 @@ void deleteTargetNode(DLL *L, int data){
 
     Node *Temp = L->first;
 
-    if (Temp->data == data){
+    if (Temp->data == target){
         deleteFirstNode(L);
         return;
     };
 
     while((Temp != nullptr)){
-        if (Temp->data == data){
+        if (Temp->data == target){
 
             if (Temp->Next == nullptr){
                 deleteLastNode(L);
@@ -186,51 +229,49 @@ void deleteTargetNode(DLL *L, int data){
         Temp = Temp->Next;
     };
 
-    printf("Tidak ada data dengan data %d\n", data);
+    printf("Tidak ada data dengan data %d\n", target);
 };
 
-void insertTargetNode(DLL *L, int data, int position){
-
+void cariNode(DLL *L, int target){
     if (L->first == nullptr){
-        insertFirstNode(L, data);
         return;
     };
+
+    int counter = 1;
 
     Node *Temp = L->first;
-    int counter = 0;
-
-    if (position <= 0){
-        return;
-    };
-
-    if (position == 1){
-        insertFirstNode(L, data);
-        return;
-    };
-
     while(Temp != nullptr){
-
-        counter = counter + 1;
-        if (position == counter){
-
-            Node *New = addNode(data);
-
-            New->Prev = Temp->Prev; 
-            New->Next = Temp;
-            New->Prev->Next = New;
-            New->Next->Prev = New;
-            
+        if (Temp->data == target){
+            printf("Ada di Node : %d\n", counter);
             return;
         };
+        counter = counter + 1;
         Temp = Temp->Next;
-
     };
 
-    if (position > counter){
-        insertLastNode(L, data);
-        return;
-    };
+    printf("Tidak ada data : %d didalam node!\n", target);
 };
+
+void reverseList(DLL *L) {
+    if (L->first == NULL) {
+        return;
+    }
+
+    Node *Curr = L->first;
+    Node *Temp = NULL;
+
+    while (Curr != NULL) {
+        Temp = Curr->Prev;
+        Curr->Prev = Curr->Next;
+        Curr->Next = Temp;
+
+        Curr = Curr->Prev;
+    }
+
+    if (Temp != NULL) {
+        L->first = Temp->Prev;
+    }
+}
 
 int main(){
     DLL *L = initDLL();
@@ -238,8 +279,11 @@ int main(){
     insertLastNode(L, 2);
     insertLastNode(L, 3);
     insertLastNode(L, 4);
-    insertLastNode(L, 5);
-    insertTargetNode(L, 5, 6);
+    insertLastNode(L, 6);
+    insertTargetNode(L, 5, 5);
+    cetakNextNode(L);
+    cetakPrevNode(L);
+    reverseList(L);
     cetakNextNode(L);
     cetakPrevNode(L);
     printf("Size List : %d\n", sizeListNode(L));
