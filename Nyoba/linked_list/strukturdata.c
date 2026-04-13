@@ -134,8 +134,8 @@ void reverseNode(Node **Head){
     };
 
     *Head = Prev;
-
 };
+
 void deleteMid_Note(Node **Head, int Target){
     Node *Curent = *Head;
     Node *Temp = NULL;

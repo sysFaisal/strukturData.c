@@ -1,7 +1,7 @@
 # Linux
 
 # DIR = Teori/d_link_list
-DIR = Praktikum/Pertemuan_4/linedlist
+DIR = Praktikum/Pertemuan_4/linkedlist
 # DIR = Nyoba/linked_list
 
 # CC = g++
