@@ -38,7 +38,7 @@ void insertLastNode(DLL *L, int data){
     };
 
     Node *Temp = L->first;
-
+    
     while (Temp->Next != NULL){
         Temp = Temp->Next;
     };
