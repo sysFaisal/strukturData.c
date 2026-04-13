@@ -42,11 +42,6 @@ void InsFirst (List *L, infotype X){
         L->First = Temp;
         return;
     };
-
-    if (Temp == NULL){
-        return;
-    };
-
     
     Temp->next = L->First;
     L->First = Temp;
@@ -180,7 +175,7 @@ void PrintInfo (List L){
         Temp = Temp->next;
     };
 
-    printf("NULL");
+    printf("NULL\n");
 };
 
 int NbElmt (List L){
@@ -219,28 +214,23 @@ address Search (List L, infotype X){
 
 void InversList (List *L){
 
+    if (L->First == NULL){
+        return;
+    };
+
     address Curr = L->First;
-    if (Curr == NULL){
-        return;
-    };
-
-    address Prev = NULL;
-
-    if (Curr->next == NULL){
-        return;
-    };
-
-    int flag = 0;
-    
     address Next = NULL;
+    address Temp = NULL;
 
     while (Curr != NULL){
         Next = Curr->next;
-        Prev = Curr;
-        
+        Curr->next = Temp;
+        Temp = Curr;
+        Curr = Next;
     };
 
-    L->First = Prev;
+    L->First = Temp;
+
 };
 
 List getNewInversList (List L){
