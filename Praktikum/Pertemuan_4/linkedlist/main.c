@@ -15,7 +15,7 @@ int main (){
 
     int i,n = 0;
     CreateList(&L1);
-    printf("--- Search ---\n");
+    printf("--- Insert ---\n");
     printf("Masukan Total Node Yang Ingin Dimasukan : "); scanf("%d",&n);
     for (i = 0; i < n; i++){
         printf("Node %d : ", i + 1);
