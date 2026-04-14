@@ -25,9 +25,14 @@ void updateNode(DLL *L, int data, int position);
 
 int main(){
     DLL *L = initDLL();
-    
+    insertLastNode(L, 0);
+    insertLastNode(L, 1);
+    insertLastNode(L, 2);
+    cetakNextNode(L);
+    cetakPrevNode(L);
+    reverseList(L);
+    cetakNextNode(L);
+    cetakPrevNode(L);
 
-    getchar();
-    getchar();
-
+    getchar(); getchar();
 };

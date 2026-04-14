@@ -29,6 +29,10 @@ all:
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
 	@echo "Done! Program ready to run..."
 
+run: all
+	@./$(TARGET)
+	@rm -f $(TARGET)
+
 debug_build:
 	@echo "Creating file DEBUG..."
 	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)

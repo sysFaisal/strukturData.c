@@ -121,11 +121,16 @@ void cetakPrevNode(DLL *L){
         Temp = Temp->Next;
     };
 
+    int flag = 0;
     while(Temp->Prev != NULL){
+        if (flag == 0){
+            printf("NULL <- %d", Temp->data);
+            flag = 1;
+        };
         printf(" <- %d", Temp->data);
         Temp = Temp->Prev;
     };
-    printf("NULL <- %d\n", Temp->data);
+    printf(" <- %d\n", Temp->data);
 
 };
 
