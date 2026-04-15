@@ -49,7 +49,6 @@ void insertFirstNode(SLL *L, int data){
         return;
     };
 
-    Node *Temp = L->first;
     New->Next = L->first;
     L->first = New;
 };

@@ -1,6 +1,6 @@
 # Windows
 
-DIR = Teori/d_link_list
+DIR = Teori/d_linked_list
 # DIR = Praktikum/Pertemuan_3/tabint
 # DIR = Nyoba/linked_list
 
