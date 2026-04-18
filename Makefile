@@ -1,7 +1,7 @@
 # Windows
 
 # DIR = Teori/d_linked_list
-DIR = Praktikum/Pertemuan_5/adtStack
+DIR = Praktikum/Pertemuan_5/stacklinked
 # DIR = Nyoba/linked_list
 
 # CC = g++
