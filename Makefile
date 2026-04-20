@@ -1,5 +1,5 @@
 # DIR = Teori/d_linked_list
-DIR = Praktikum/Pertemuan_5/stacklinked
+DIR = Praktikum/Pertemuan_5/adtStack
 # DIR = Nyoba/linked_list
 
 # CC = g++
@@ -32,9 +32,7 @@ else
 endif
 
 all:
-	@echo "Building from: $(DIR)"
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
-	@echo "Done! Program ready to run..."
 
 run: all
 	@echo --------------------------------
