@@ -8,8 +8,8 @@ DIR = Praktikum/Pertemuan_5/stacklinked
 CC = gcc
 
 # CFLAGS dasar
-# CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c++17 -O2
-CFLAGS = -I"$(DIR)" -Wall -Wextra -std=c11 -O2
+# CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
+CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
 
 # Flag khusus untuk debug mode
 DEBUG_FLAGS = -g -O0

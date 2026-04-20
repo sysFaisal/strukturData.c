@@ -2,7 +2,7 @@
 Author : 2550081098, Faisal Fajari
 Kelas : E
 Deskripsi: Header file dari prototype stack
-Tanggal : 
+Tanggal : 20/4/2026
 */
 
 #ifndef _STACK_H
