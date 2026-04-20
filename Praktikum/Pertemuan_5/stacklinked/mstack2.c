@@ -12,7 +12,7 @@ int main() {
     CreateStack(&S);
 
     do {
-        printf("\n==================\n");
+        printf("==================\n");
         printf("1. Push\n");
         printf("2. Pop\n");
         printf("3. Print Stack\n");
