@@ -1,8 +1,5 @@
 /* Program : boolean.h
-Author : 
-    1. 2550081098, Faisal Fajari,
-    2. 2550081000, Lorem Ipsum
-    3. 2550081000, Ipsum Dolor 
+Author : 2550081098, Faisal Fajari 
 Kelas : E
 Deskripsi: Header file dari prototype Boolean
 Tanggal : 21/04/2026

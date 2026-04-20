@@ -1,10 +1,7 @@
 /* Program : stack2.h
-Author : 
-    1. 2550081098, Faisal Fajari,
-    2. 2550081000, Lorem Ipsum
-    3. 2550081000, Ipsum Dolor 
+Author : 2550081098, Faisal Fajari
 Kelas : E
-Deskripsi: Header file dari prototype stack pointer
+Deskripsi: Header file dari prototype stack linked list
 Tanggal : 21/04/2026
 */
 #ifndef _STACK2_H

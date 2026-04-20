@@ -1,3 +1,9 @@
+/* Program : stack2.h
+Author : 2550081098, Faisal Fajari
+Kelas : E
+Deskripsi: Main driver dari prototype stack linked list
+Tanggal : 21/04/2026
+*/
 #include <stdio.h>
 #include <stdlib.h>
 #include "boolean.h"
