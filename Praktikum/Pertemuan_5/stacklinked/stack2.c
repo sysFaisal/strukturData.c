@@ -28,7 +28,7 @@ address Alokasi(infotype x){
 };
 
 boolean IsStackEmpty(Stack S) {
-    return (S.TOP == nil);
+    return (S.BUTTOM == nil);
 };
 
 boolean CariElemenStack(Stack S, infotype x){
@@ -65,7 +65,7 @@ void Push (Stack *S, infotype X){
         return;
     };
 
-    New->next = S->TOP;
+    S->TOP->next = New;
     S->TOP = New;
 
     return;
@@ -78,11 +78,24 @@ void Pop (Stack *S, infotype *X){
 
     address Temp = S->TOP;
     *X = Temp->Info;
-    S->TOP = Temp->next;
 
-    if (S->TOP == nil){
+    if (S->TOP == S->BUTTOM){
         S->BUTTOM = nil;
+        S->TOP = nil;
+        DeAlokasi(Temp);
+        return;
     };
+
+    address Prev1 = NULL;
+    address Prev = S->BUTTOM;
+
+    while (Prev->next != NULL){
+        Prev1 = Prev;
+        Prev = Prev->next;
+    };
+
+    S->TOP = Prev1;
+    S->TOP->next = nil;
 
     DeAlokasi(Temp);
 
@@ -96,12 +109,12 @@ void CetakStack(Stack S) {
     };
 
     int flag = 0;
-    address Temp = S.TOP;
+    address Temp = S.BUTTOM;
 
     while(Temp != nil){
 
         if (flag == 0){
-            printf("TOP -> %d ", Temp->Info);
+            printf("%d ", Temp->Info);
             flag = flag + 1;
         } else {
             printf("-> %d ", Temp->Info);
@@ -109,6 +122,6 @@ void CetakStack(Stack S) {
         Temp = Temp->next;
     };
 
-    printf("-> NULL");
+    printf("-> TOP & NULL");
 };
 

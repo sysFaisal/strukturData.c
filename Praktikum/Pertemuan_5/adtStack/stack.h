@@ -9,7 +9,6 @@ Tanggal :
 #define _STACK_H
 #include "boolean.h"
 #include <stdio.h>
-#include <conio.h>
 #define Nil 0
 #define MaxEl 10
 #define IdxUndef -999

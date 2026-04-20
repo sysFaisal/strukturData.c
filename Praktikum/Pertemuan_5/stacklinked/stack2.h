@@ -11,7 +11,6 @@ Tanggal : 21/04/2026
 #define _STACK2_H
 #include "boolean.h"
 #include <stdio.h>
-#include <conio.h>
 
 #define nil NULL
 #define info(P)
