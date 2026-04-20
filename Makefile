@@ -1,5 +1,3 @@
-# Windows
-
 # DIR = Teori/d_linked_list
 DIR = Praktikum/Pertemuan_5/stacklinked
 # DIR = Nyoba/linked_list
@@ -7,44 +5,51 @@ DIR = Praktikum/Pertemuan_5/stacklinked
 # CC = g++
 CC = gcc
 
-# CFLAGS dasar
 # CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
 CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
 
-# Flag khusus untuk debug mode
 DEBUG_FLAGS = -g -O0
 
-# Flag Linker (Math library & Portabilitas UCRT)
-LDFLAGS = -lm -static-libgcc
-
-# Mengambil semua file .c dari folder yang ditentukan
 SRC = $(wildcard $(DIR)/*.c)
 # SRC = $(wildcard $(DIR)/*.cpp)
 
-# Nama file eksekusi (output)
-TARGET = program.exe
+ifeq ($(OS),Windows_NT)
+    # Pengaturan Windows
+
+    TARGET = program.exe
+    LDFLAGS = -lm -static-libgcc
+    RM = if exist $(TARGET) del $(TARGET)
+    FIX_PATH = $(subst /,\,$1)
+    CLEAN_MSG = @echo Delete file program (Windows)...
+else
+    # Pengaturan Linux/macOS
+	
+    TARGET = program
+    LDFLAGS = -lm
+    RM = rm -f $(TARGET)
+    FIX_PATH = $1
+    CLEAN_MSG = @echo "Delete file program (Linux)..."
+endif
 
 all:
-	@echo Creating file release : $(DIR)
+	@echo "Building from: $(DIR)"
 	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
-	@echo Done! Program ready to run...
+	@echo "Done! Program ready to run..."
 
 run: all
 	@echo --------------------------------
 	@echo .                              .
-	@echo .                              . 
 	@./$(TARGET)
 	@echo .                              .
-	@echo .                              . 
 	@echo --------------------------------
-	@echo Delete file program...
-	@if exist $(TARGET) del $(TARGET)
+	$(CLEAN_MSG)
+	@$(RM)
 
 debug_build:
-	@echo Creating file DEBUG...
+	@echo "Creating DEBUG build..."
 	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
-	@echo Done! Ready to debugging...
+	@echo "Ready for debugging!"
 
 clean:
-	@if exist $(TARGET) del $(TARGET)
-	@echo Delete file program...
+	$(CLEAN_MSG)
+	@$(RM)
