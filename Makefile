@@ -1,17 +1,17 @@
-# DIR = Teori/d_linked_list
-DIR = Praktikum/Pertemuan_5/adtStack
+DIR = Teori/Tugas/mhslink
+# DIR = Praktikum/Pertemuan_5/adtStack
 # DIR = Nyoba/linked_list
 
-# CC = g++
-CC = gcc
+CC = g++
+# CC = gcc
 
-# CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
-CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
+CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
+# CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
 
 DEBUG_FLAGS = -g -O0
 
-SRC = $(wildcard $(DIR)/*.c)
-# SRC = $(wildcard $(DIR)/*.cpp)
+# SRC = $(wildcard $(DIR)/*.c)
+SRC = $(wildcard $(DIR)/*.cpp)
 
 ifeq ($(OS),Windows_NT)
     # Pengaturan Windows

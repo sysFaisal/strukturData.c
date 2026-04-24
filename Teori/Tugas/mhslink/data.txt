@@ -1,0 +1,9 @@
+101,Andi,Informatika,3.85
+102,Budi,Sistem Informasi,3.45
+103,Citra,Informatika,3.92
+104,Dina,Teknik Komputer,3.60
+105,Eka,Informatika,3.78
+106,Fitri,Teknik Komputer,3.65
+107,Gusti,Teknik Komputer,3.55
+108,Huda,Teknik Komputer,3.45
+109,Ika,Teknik Komputer,3.65
