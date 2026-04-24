@@ -1,10 +1,11 @@
 #ifndef _Func_H
 #define _Func_H
-#include <stdio.h>
+#include <iostream>
 #include <stdlib.h>
 #include <string>
 #include <string.h>
-#include "fstream"
+#include <fstream>
+#include <stdbool.h>
 
 using namespace std;
 
@@ -21,12 +22,15 @@ struct SLL{
 };
 
 SLL* initNode();
-Node *addNode(int dat);
-void insertLastNode(SLL *L, int data);
-void insertFirstNode(SLL *L, int data);
-int sizeListNode(SLL *L);
-void deleteLastNode(SLL *L);
-int cariNode(SLL *L, int target);
+Node *addNode(int nim, string jurusan, string nama, float ipk);
+
+bool cekFile(ifstream &File);
+bool initall(SLL **L, ifstream &File);
+void printfile(ifstream &file);
+void loadToNode(SLL *L, ifstream &file);
+
+void insertFirstNode(SLL *L, int nim, string jurusan, string nama, float ipk);
+//int sizelistNode(SLL *L);
 void cetakNode(SLL *L);
 
 #endif

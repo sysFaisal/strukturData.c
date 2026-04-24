@@ -1,10 +1,10 @@
 #include <iostream>
 #include <stdlib.h>
-#include <stdio.h>
 #include <fstream>
 #include <string>
 #include <string.h>
-// #include "func.h"
+#include <stdbool.h>
+#include "func.h"
 
 /* Func
 SLL* initNode();
@@ -16,17 +16,21 @@ void deleteLastNode(SLL *L);
 int cariNode(SLL *L, int target);
 void cetakNode(SLL *L);
 */
-
 using namespace std;
 
 int main(){
-    ifstream myfile("Teori/Tugas/mhslink/data.txt");
+    string namaFile = "Teori/Tugas/mhslink/data.txt";
+    ifstream file (namaFile); SLL *L;
 
-    if (!myfile.is_open()){
-        printf("TIdak ada");
+    if (!initall(&L, file)){
+        return -1;
     };
 
+    loadToNode(L, file);
+    cetakNode(L);
+
     getchar();
     getchar();
+    
 };
 

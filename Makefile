@@ -40,7 +40,6 @@ run: all
 	@./$(TARGET)
 	@echo .                              .
 	@echo --------------------------------
-	$(CLEAN_MSG)
 	@$(RM)
 
 debug_build:
