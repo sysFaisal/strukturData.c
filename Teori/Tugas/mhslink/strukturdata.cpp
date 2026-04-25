@@ -19,15 +19,20 @@ void cetakNode(SLL *L);
 using namespace std;
 
 int main(){
-    string namaFile = "Teori/Tugas/mhslink/data.txt";
-    ifstream file (namaFile); SLL *L;
+    string readFile = "Teori/Tugas/mhslink/data.txt";
+    string writeFile = "Teori/Tugas/mhslink/clone.txt";
+    ifstream read (readFile);
+    ofstream write (writeFile);
+    SLL *L;
 
-    if (!initall(&L, file)){
+    if (!initall(&L, read)){
         return -1;
     };
 
-    loadToNode(L, file);
+    loadToNode(L, read);
+    filterNode(L, 3.7);
     cetakNode(L);
+    saveToFile(L, write);
 
     getchar();
     getchar();

@@ -1,0 +1,2 @@
+103,Citra,Informatika,3.92
+101,Andi,Informatika,3.78

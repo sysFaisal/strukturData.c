@@ -104,39 +104,62 @@ void cetakNode(SLL *L){
     cout << "NULL" << endl;
 };
 
+void deleteFirstNode(SLL *L){
+    if (L->first == nullptr){
+        cout << "Data Kosong" << endl;
+        return;
+    };
+
+    Node *Temp = L->first;
+    L->first = L->first->Next;
+    delete Temp;
+};
+
 void filterNode(SLL *L, float ipk){
     if (L->first == nullptr){
         cout << "Data Kosong" << endl;
         return;
     };
-    
-    Node *Temp = L->first;
-    while(Temp != nullptr){
-        if (Temp->ipk >= ipk){
-            
-        };
+
+    while (L->first->ipk < ipk && L->first->Next != nullptr){
+        deleteFirstNode(L);
     };
+
+    Node *Curr = L->first;
+    Node *Temp = nullptr;
+    Node *Prev = nullptr;
+
+    while (Curr != nullptr){
+
+        while (Curr != nullptr && Curr->ipk < ipk){
+            Prev->Next = Curr->Next;
+            delete Curr;
+            Curr = Prev->Next;
+        }
+
+        if (Curr != nullptr){
+            Prev = Curr;
+            Curr = Curr->Next;
+        }
+    }
 };
 
-/*
-int sizeListNode(SLL *L){
-    int counter = 0;
-    if (L == NULL){
-        return counter;
+void saveToFile(SLL *L, ofstream &file){
+    if (L->first == nullptr){
+        cout << "Data Kosong" << endl;
+        return;
     };
 
-    if (L->first == nullptr){
-        return counter;
+    if (!file.is_open()){
+        cout << "File Kosong" << endl;
+        return;
     };
 
     Node *Temp = L->first;
-    while (Temp->Next != nullptr){
-        counter = counter + 1;
+    while (Temp != nullptr){
+        file << Temp->nim << ',' << Temp->name << ',' << Temp->Jurusan << ',' << Temp->ipk << endl;
         Temp = Temp->Next;
     };
-    counter = counter + 1;
 
-    return counter;
+    file.close();
 };
-
-*/

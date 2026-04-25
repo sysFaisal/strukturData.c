@@ -1,5 +1,6 @@
-101,Andi,Informatika,3.85
-102,Budi,Sistem Informasi,3.45
+101,Andi,Informatika,3.78
+102,Dudung,Sistem Informasi,3.67
+102,Budi,Sistem Informasi,3.60
 103,Citra,Informatika,3.92
-104,Dina,Teknik Komputer,3.60
-105,Eka,Informatika,3.78
+104,Dina,Teknik Komputer,3.45
+105,Eka,Informatika,3.6
