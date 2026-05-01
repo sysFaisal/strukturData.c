@@ -74,6 +74,7 @@ void loadToNode(SLL *L, ifstream &file){
 
     string line;
     while (getline(file, line)){
+        
         string nim, nama, jurusan, ipk;
         stringstream ss(line);
 

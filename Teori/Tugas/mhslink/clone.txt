@@ -1,2 +1,45 @@
-103,Citra,Informatika,3.92
+200,Xavier,Sistem Informasi,3.71
+199,Wisnu,Informatika,3.87
+196,Tasya,Informatika,3.89
+193,Qais,Informatika,3.82
+191,Opal,Sistem Informasi,3.73
+190,Nadia,Informatika,3.93
+187,Karen,Informatika,3.86
+185,Irene,Sistem Informasi,3.72
+184,Hugo,Informatika,3.77
+181,Evi,Informatika,3.9
+178,Bryan,Informatika,3.84
+176,Zidan,Sistem Informasi,3.7
+175,Yani,Informatika,3.92
+172,Ucup,Informatika,3.78
+169,Rio,Informatika,3.8
+166,Nina,Informatika,3.91
+164,Lukman,Sistem Informasi,3.74
+163,Kiki,Informatika,3.85
+160,Hesti,Informatika,3.88
+158,Farah,Sistem Informasi,3.71
+157,Erik,Informatika,3.83
+154,Bella,Informatika,3.94
+151,Yusuf,Informatika,3.79
+148,Ulfa,Informatika,3.87
+146,Sinta,Sistem Informasi,3.75
+145,Raka,Informatika,3.81
+142,Olivia,Informatika,3.93
+140,Melati,Sistem Informasi,3.73
+139,Lutfi,Informatika,3.76
+136,Intan,Informatika,3.89
+134,Gilang,Sistem Informasi,3.7
+133,Fikri,Informatika,3.82
+130,Cindy,Informatika,3.95
+127,Zaki,Informatika,3.86
+125,Xena,Sistem Informasi,3.72
+124,Wahyu,Informatika,3.9
+121,Tono,Informatika,3.77
+118,Qori,Informatika,3.84
+115,Nanda,Informatika,3.8
+113,Lina,Sistem Informasi,3.74
+112,Karina,Informatika,3.91
+109,Hana,Informatika,3.88
+107,Fajar,Sistem Informasi,3.71
+104,Citra,Informatika,3.92
 101,Andi,Informatika,3.78

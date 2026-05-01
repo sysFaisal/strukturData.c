@@ -19,7 +19,7 @@ void cetakNode(SLL *L);
 using namespace std;
 
 int main(){
-    string readFile = "Teori/Tugas/mhslink/data.txt";
+    string readFile = "Teori/Tugas/mhs2link/data.txt";
     string writeFile = "Teori/Tugas/mhslink/clone.txt";
     ifstream read (readFile);
     ofstream write (writeFile);

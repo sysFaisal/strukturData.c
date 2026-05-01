@@ -20,7 +20,7 @@ ifeq ($(OS),Windows_NT)
     LDFLAGS = -lm -static-libgcc
     RM = if exist $(TARGET) del $(TARGET)
     FIX_PATH = $(subst /,\,$1)
-    CLEAN_MSG = @echo Delete file program (Windows)...
+    CLEAN_MSG = @echo Delete file program ...
 else
     # Pengaturan Linux/macOS
 	
@@ -28,7 +28,7 @@ else
     LDFLAGS = -lm
     RM = rm -f $(TARGET)
     FIX_PATH = $1
-    CLEAN_MSG = @echo "Delete file program (Linux)..."
+    CLEAN_MSG = @echo "Delete file program ..."
 endif
 
 all:
