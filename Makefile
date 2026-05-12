@@ -1,4 +1,4 @@
-DIR = Teori/Tugas/queue
+DIR = Teori/Tugas/stack_array
 # DIR = Praktikum/Pertemuan_5/adtStack
 # DIR = Nyoba/linked_list
 
