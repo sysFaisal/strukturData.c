@@ -30,6 +30,7 @@ void printfile(ifstream &file);
 void loadToNode(SLL *L, ifstream &file);
 void filterNode(SLL *L, float ipk);
 void saveToFile(SLL *L, ofstream &file);
+void sortNode(SLL *L);
 
 void insertFirstNode(SLL *L, int nim, string jurusan, string nama, float ipk);
 void cetakNode(SLL *L);

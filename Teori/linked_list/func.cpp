@@ -73,6 +73,21 @@ int sizeListNode(SLL *L){
     return counter;
 };
 
+void deletefirstNode(SLL *L){
+    if (L == NULL){
+        return;
+    };
+
+    if (L->first == nullptr){
+        return;
+    };
+
+    Node *Temp = L->first;
+    L->first = Temp->Next;
+    free(Temp);
+    Temp = NULL;
+};
+
 void deleteLastNode(SLL *L){
     if (L == NULL){
         return;

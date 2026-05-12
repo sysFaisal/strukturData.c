@@ -18,6 +18,7 @@ void insertLastNode(SLL *L, int data);
 void insertFirstNode(SLL *L, int data);
 int sizeListNode(SLL *L);
 void deleteLastNode(SLL *L);
+void deletefirstNode(SLL *L);
 int cariNode(SLL *L, int target);
 void cetakNode(SLL *L);
 

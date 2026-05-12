@@ -22,7 +22,7 @@ int main(){
     insertFirstNode(L, 3);
     insertFirstNode(L, 4);
     insertLastNode(L, 5);
-    deleteLastNode(L);
+    deletefirstNode(L);
     cetakNode(L);
     printf("\n");
     printf("Ada di Node : %d\n", cariNode(L,2));

@@ -122,6 +122,81 @@ void filterNode(SLL *L, float ipk){
         return;
     };
 
+    while (L->first != nullptr && L->first->ipk < ipk){
+        deleteFirstNode(L);
+    };
+
+    if (L->first == nullptr){
+        return;
+    };
+
+    Node *Prev = L->first;
+    Node *Curr = L->first->Next;
+
+    while (Curr != nullptr){
+        while (Curr != nullptr && Curr->ipk < ipk){
+            Node *VeryTemp = Curr->Next;
+            Prev->Next = VeryTemp;
+            delete Curr;
+            Curr = VeryTemp;
+        };
+
+        if (Curr != nullptr){
+            Prev = Curr;
+            Curr = Curr->Next;
+        }
+    };
+
+};
+
+void sortNode(SLL *L){
+    if (L->first == nullptr){
+        cout << "Data Kosong" << endl;
+        return;
+    };
+
+    Node *Curr = L->first;
+    Node Boiler;
+
+    while (Curr != nullptr){
+        Node *Fix = Curr;
+        Node *Temp = Curr->Next;
+
+        while (Temp != nullptr){
+            if (Fix->ipk < Temp->ipk){
+                Fix = Temp;
+            };
+            Temp = Temp->Next;
+        };
+
+        if (Fix != Curr){
+            Boiler.ipk = Curr->ipk;
+            Boiler.Jurusan = Curr->Jurusan;
+            Boiler.name = Curr->name;
+            Boiler.nim = Curr->nim;
+
+            Curr->ipk = Fix->ipk;
+            Curr->Jurusan = Fix->Jurusan;
+            Curr->name = Fix->name;
+            Curr->nim = Fix->nim;
+            
+            Fix->ipk = Boiler.ipk;
+            Fix->Jurusan = Boiler.Jurusan;
+            Fix->name = Boiler.name;
+            Fix->nim = Boiler.nim;
+        };
+
+        Curr = Curr->Next;
+    };
+};
+
+/*
+void filterNode(SLL *L, float ipk){
+    if (L->first == nullptr){
+        cout << "Data Kosong" << endl;
+        return;
+    };
+
     while (L->first->ipk < ipk && L->first->Next != nullptr){
         deleteFirstNode(L);
     };
@@ -144,7 +219,7 @@ void filterNode(SLL *L, float ipk){
         }
     }
 };
-
+*/
 void saveToFile(SLL *L, ofstream &file){
     if (L->first == nullptr){
         cout << "Data Kosong" << endl;

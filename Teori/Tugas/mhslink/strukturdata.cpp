@@ -30,7 +30,8 @@ int main(){
     };
 
     loadToNode(L, read);
-    filterNode(L, 3.7);
+    //filterNode(L, 3.7);
+    sortNode(L);
     cetakNode(L);
     saveToFile(L, write);
 
