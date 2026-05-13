@@ -4,43 +4,51 @@
 
 int main (){
     Queue *Q = initQueue();
-    int pilihan = 0, x = 0;
+    int pilihan = 0;
+    float sizeMB;
     char lagi;
-    
+    string namaFile;
     do {
         system("clear");
         cout << endl <<"==================" << endl;
-        cout << "1. Enqueue" << endl;
-        cout << "2. Dequeue" << endl;
-        cout << "3. Cetak Queue" << endl;
+        cout << "1. Download File (Enqueue)" << endl;
+        cout << "2. Proses File (Dequeue)" << endl;
+        cout << "3. Cetak Semua File" << endl;
         cout << "0. Keluar" << endl;
+        cout << "Pilihan : ";
         cin >> pilihan;
 
         switch (pilihan) {
 
             case 1:
-                cout << "=== Enqueue (999 untuk berhenti) ===" << endl;
+                cout << endl << "=== Enqueue (Download) ===" << endl;
                 while (1) {
-                    cout << "Masukan Element: ";
-                    cin >> x;
+                    cout << "Masukan Nama File: ";
+                    cin >> namaFile;
+                    cout << "Masukan Size File (MB): ";
+                    cin >> sizeMB;
 
-                    if (x == 999) {
+                    cout << "Lagi? (y/n): ";
+                    cin >> lagi;
+
+                    enqueue(Q, sizeMB, namaFile);
+
+                    if (lagi == 'n' || lagi == 'N') {
                         break;
                     }
 
-                    enqueue(Q, x);
                 }
                 break;
 
             case 2:
 
-                cout << endl << "=== Dequeue ===" << endl;
-                cout << "Isi Queue : ";
+                cout << endl << "=== Dequeue (Proses) ===" << endl;
+                cout << "Isi File dalam Queue : ";
                 cetakQueue(Q);
                 cout << endl;
 
                 if (isEmptyQueue(Q)) {
-                    cout << "Queue Kosong!" << endl;
+                    cout << endl << "Queue Kosong!" << endl;
                     cout << "Tekan enter untuk lanjut...";
                     cin.ignore();
                     cin.get();
@@ -48,12 +56,13 @@ int main (){
                 }
 
                 do {
-                    dequeue(Q, &x);
-                    cout << "Elemen yg dihapus:" << x << endl;
 
-                    cout << "Isi Queue : ";
-                    cetakQueue(Q);
-                    cout << endl;
+                    cout << "Proses? (y/n): ";
+                    cin >> lagi;
+
+                    if (lagi == 'n' || lagi == 'N') {
+                        break;
+                    }
 
                     if (isEmptyQueue(Q)) {
                         cout << "Queue Kosong!" << endl;
@@ -63,12 +72,17 @@ int main (){
                         break;
                     }
 
-                    cout << "Lagi? (y/n): ";
-                    cin >> lagi;
+                    dequeue(Q, &sizeMB, &namaFile);
+                    cout << "File yg ditelah didownload: "<< endl << namaFile << "  "<< sizeMB << endl;
 
-                    if (lagi == 'n' || lagi == 'N') {
-                        break;
-                    }
+                    if(!isEmptyQueue(Q)){
+                        cout << endl << "Isi File dalam Queue : ";
+                        cetakQueue(Q);
+                        cout << endl;
+                    }else {
+                        cout << endl;
+                    };
+
 
                 } while (lagi == 'y' || lagi == 'Y');
 
@@ -77,14 +91,14 @@ int main (){
             case 3:
 
                 if (isEmptyQueue(Q)) {
-                    cout << "Queue Kosong!" << endl;
+                    cout << endl << "Queue Kosong!" << endl;
                     cout << "Tekan enter untuk lanjut...";
                     cin.ignore();
                     cin.get();
                     break;
                 }
 
-                cout << endl <<"Isi queue: ";
+                cout << endl <<"Isi File dalam Queue: ";
                 cetakQueue(Q);
                 cout << endl;
 
@@ -104,6 +118,6 @@ int main (){
         }
 
     } while (pilihan != 0);
-    
+
     return 0;
 };

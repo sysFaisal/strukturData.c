@@ -1,4 +1,4 @@
-DIR = Teori/Tugas/stack_array
+DIR = Teori/Tugas/queue_sll
 # DIR = Praktikum/Pertemuan_5/adtStack
 # DIR = Nyoba/linked_list
 
@@ -23,7 +23,7 @@ ifeq ($(OS),Windows_NT)
     CLEAN_MSG = @echo Delete file program ...
 else
     # Pengaturan Linux/macOS
-	
+
     TARGET = program
     LDFLAGS = -lm
     RM = rm -f $(TARGET)

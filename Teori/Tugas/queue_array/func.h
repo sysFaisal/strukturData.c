@@ -8,10 +8,15 @@
 #include <stdbool.h>
 
 using namespace std;
-#define max 5
+#define max 2
+
+struct File{
+    string namaFile;
+    float sizeMB;
+};
 
 struct Queue{
-    int data[max + 1];
+    File file[max + 1];
     int front;
     int rear;
 };
@@ -21,8 +26,8 @@ Queue initQueue();
 bool isEmptyQueue(Queue *Data);
 bool isFullQueue(Queue *Data);
 int CountQueue(Queue *Data);
-void enqueue(Queue *Data, int data);
-void dequeue(Queue *Data, int *rollback = nullptr);
+void enqueue(Queue *Data, float sizeMB, string namaFile);
+void dequeue(Queue *Data, float *rollbackSizeMB = nullptr, string *rollbackNamaFile = nullptr);
 void cetakQueue(Queue *Data);
 
 #endif

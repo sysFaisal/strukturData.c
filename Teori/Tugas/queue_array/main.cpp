@@ -4,46 +4,55 @@
 
 int main (){
     Queue Q = initQueue();
-    int pilihan = 0, x = 0;
+    int pilihan = 0;
     char lagi;
-    
+    string namaFile;
+    float sizeMB;
     do {
         system("clear");
         cout << endl <<"==================" << endl;
-        cout << "1. Enqueue" << endl;
-        cout << "2. Dequeue" << endl;
-        cout << "3. Cetak Queue" << endl;
-        cout << "4. Count Queue" << endl;
+        cout << "1. Download File (Enqueue) " << endl;
+        cout << "2. Proses File (Dequeue)" << endl;
+        cout << "3. Cetak Semua File" << endl;
+        cout << "4. Count Semua File" << endl;
         cout << "0. Keluar" << endl;
+        cout << "Pilihan: ";
         cin >> pilihan;
 
         switch (pilihan) {
 
             case 1:
-                cout << "=== Enqueue (999 untuk berhenti) ===" << endl;
+                cout << endl <<"=== Download (Enqueue) ===" << endl;
                 while (1) {
-                    cout << "Masukan Element: ";
-                    cin >> x;
+                    cout << "Masukan Nama File: ";
+                    getline(cin >> ws, namaFile);
 
-                    if (x == 999) {
-                        break;
-                    }
-                    
+                    cout << "Masukan SizeFile (MB): ";
+                    cin >> sizeMB;
+
                     if(isFullQueue(&Q)){
-                        cout << "Queue Penuh! Data gagal ditambahkan." << endl;
+                        cout << endl << "Queue Penuh! Data gagal ditambahkan." << endl;
                         cout << "Tekan enter untuk lanjut...";
                         cin.ignore();
                         cin.get();
                         break;
                     }
 
-                    enqueue(&Q, x);
+                    enqueue(&Q, sizeMB, namaFile);
+
+                    cout << "Lagi? (y/n): ";
+                    cin >> lagi;
+
+                    if (lagi == 'n' || lagi == 'N') {
+                        break;
+                    }
+
                 }
                 break;
 
             case 2:
 
-                cout << endl << "=== Dequeue ===" << endl;
+                cout << endl << "=== Proses (Dequeue) ===" << endl;
                 cout << "Isi Queue : ";
                 cetakQueue(&Q);
                 cout << endl;
@@ -57,27 +66,28 @@ int main (){
                 }
 
                 do {
-                    dequeue(&Q, &x);
-                    cout << "Elemen yg dihapus:" << x << endl;
+                    cout << "Proses? (y/n): ";
+                    cin >> lagi;
 
-                    cout << "Isi Queue : ";
-                    cetakQueue(&Q);
-                    cout << endl;
+                    if (lagi == 'n' || lagi == 'N') {
+                        break;
+                    }
+
+                    dequeue(&Q, &sizeMB , &namaFile);
+                    cout << "File yg ditelah didownload: " << namaFile << "   " << sizeMB << endl;
 
                     if (isEmptyQueue(&Q)) {
-                        cout << "Queue Kosong!" << endl;
+                        cout << endl << "Queue Kosong!" << endl;
                         cout << "Tekan enter untuk lanjut...";
                         cin.ignore();
                         cin.get();
                         break;
                     }
 
-                    cout << "Lagi? (y/n): ";
-                    cin >> lagi;
+                    cout << endl << "Isi File dalam Queue : ";
+                    cetakQueue(&Q);
+                    cout << endl;
 
-                    if (lagi == 'n' || lagi == 'N') {
-                        break;
-                    }
 
                 } while (lagi == 'y' || lagi == 'Y');
 
@@ -86,14 +96,14 @@ int main (){
             case 3:
 
                 if (isEmptyQueue(&Q)) {
-                    cout << "Queue Kosong!" << endl;
+                    cout << endl <<"Queue Kosong!" << endl;
                     cout << "Tekan enter untuk lanjut...";
                     cin.ignore();
                     cin.get();
                     break;
                 }
 
-                cout << endl <<"Isi queue: ";
+                cout << endl <<"Isi File dalam Queue: ";
                 cetakQueue(&Q);
                 cout << endl;
 
@@ -101,19 +111,19 @@ int main (){
                 cin.ignore();
                 cin.get();
                 break;
-            
+
             case 4:
-                
+
                 if (isEmptyQueue(&Q)) {
-                    cout << "Queue Kosong!" << endl;
+                    cout << endl << "Queue Kosong!" << endl;
                     cout << "Tekan enter untuk lanjut...";
                     cin.ignore();
                     cin.get();
                     break;
                 }
 
-                cout << "Jumlah Queue: " << CountQueue(&Q) << endl;
-                
+                cout << endl << "Jumlah File dalam Queue: " << CountQueue(&Q) << endl;
+
                 cout << "Tekan enter untuk lanjut...";
                 cin.ignore();
                 cin.get();
@@ -131,6 +141,6 @@ int main (){
         }
 
     } while (pilihan != 0);
-    
+
     return 0;
 };

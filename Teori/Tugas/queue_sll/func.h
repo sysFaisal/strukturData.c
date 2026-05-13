@@ -10,7 +10,8 @@
 using namespace std;
 
 struct Node{
-    int data;
+    string namafile;
+    float sizeMB;
     struct Node *Next;
 };
 
@@ -20,10 +21,10 @@ struct Queue{
 };
 
 Queue* initQueue();
-Node *addNode(int data);
+Node *addNode(float sizeMB, string namaFile);
 bool isEmptyQueue(Queue *Data);
-void enqueue(Queue *Data, int data);
-void dequeue(Queue *Data, int *rollback = nullptr);
+void enqueue(Queue *Data, float sizeMB, string namaFile);
+void dequeue(Queue *Data, float *rlback_ksizeMB = nullptr, string *rlback_namafile = nullptr);
 void cetakQueue(Queue *Data);
 
 #endif

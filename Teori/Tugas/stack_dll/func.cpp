@@ -8,9 +8,9 @@ Stack* initStack(){
     return New;
 };
 
-Node *addNode(int data){
+Node *addNode(string namaBuku){
     Node *New = new Node;
-    New->data = data;
+    New->namaBuku = namaBuku;
     New->Next = nullptr;
     New->Prev = nullptr;
     return New;
@@ -20,8 +20,8 @@ bool isEmptyStack(Stack *Data){
     return (Data->top == nullptr);
 };
 
-void push (Stack *Data, int data){
-    Node *New = addNode(data);
+void push (Stack *Data, string namaBuku){
+    Node *New = addNode(namaBuku);
 
     if (isEmptyStack(Data)){
         Data->top = New;
@@ -31,18 +31,22 @@ void push (Stack *Data, int data){
     New->Next = Data->top;
     Data->top->Prev = New;
     Data->top = New;
-    
+
     return;
 };
 
-void pop (Stack *Data, int *rollback){
+void pop (Stack *Data, string *rollbackBuku){
     if (isEmptyStack(Data)){
         return;
     };
 
     Node *Temp = Data->top;
     Data->top = Data->top->Next;
-    *rollback = Temp->data;
+
+    if(rollbackBuku != nullptr){
+        *rollbackBuku = Temp->namaBuku;
+    };
+
     delete Temp;
 
     if (!isEmptyStack(Data)){
@@ -56,11 +60,19 @@ void cetakStack(Stack *Data){
     if (isEmptyStack(Data)){
         return;
     };
-
+    int counter = 0;
     Node *Temp = Data->top;
-    while(Temp->Next != nullptr){
-        cout << Temp->data << " <-> ";
+    cout << endl;
+
+    while(Temp != nullptr){
+        counter = counter + 1;
+
+        if (counter == 1){
+            cout << counter << ". " << Temp->namaBuku << "  " << "Top" << endl;
+        } else {
+            cout << counter << ". " << Temp->namaBuku << endl;
+        };
+
         Temp = Temp->Next;
     };
-    cout << Temp->data << "-> nullptr" << endl;
 };

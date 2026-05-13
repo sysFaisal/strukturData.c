@@ -10,7 +10,7 @@
 using namespace std;
 
 struct Node{
-    int data;
+    string namaBuku;
     struct Node *Next;
     struct Node *Prev;
 };
@@ -20,10 +20,10 @@ struct Stack{
 };
 
 Stack* initStack();
-Node *addNode(int data);
+Node *addNode(int nim, string namaBuku);
 bool isEmptyStack(Stack *Data);
-void push (Stack *Data, int data);
-void pop (Stack *Data, int *rollback = nullptr);
+void push (Stack *Data, string namaBuku);
+void pop (Stack *Data, string *rollbackBuku = nullptr);
 void cetakStack(Stack *Data);
 
 #endif

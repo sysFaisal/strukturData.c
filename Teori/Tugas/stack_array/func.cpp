@@ -1,12 +1,13 @@
 #include <stdbool.h>
 #include <iostream>
+#include <string>
 #include "func.h"
 
 
 void DestroyStack(Stack *Data){
     int i;
     for (i = 0; i <= max; i++){
-        Data->data[i] = 0;
+        Data->namaBuku[i] = "_";
     };
     Data->top = 0;
     return;
@@ -30,11 +31,11 @@ int CountStack(Stack *Data){
     return Data->top;
 };
 
-void push (Stack *Data, int data){
+void push (Stack *Data, string namaBuku){
 
     if (isEmptyStack(Data)){
         Data->top = 1;
-        Data->data[Data->top] = data;
+        Data->namaBuku[Data->top] = namaBuku;
         return;
     };
 
@@ -43,18 +44,21 @@ void push (Stack *Data, int data){
     };
 
     Data->top = Data->top + 1;
-    Data->data[Data->top] = data;
-    
+    Data->namaBuku[Data->top] = namaBuku;
+
     return;
 };
 
-void pop (Stack *Data, int *rollback){
+void pop (Stack *Data, string *rollbackBuku){
     if (isEmptyStack(Data)){
         return;
     };
 
-    *rollback = Data->data[Data->top];
-    Data->data[Data->top] = 0;
+    if (rollbackBuku != nullptr){
+        *rollbackBuku = Data->namaBuku[Data->top];
+    };
+
+    Data->namaBuku[Data->top] = "_";
     Data->top = Data->top - 1;
 
     return;
@@ -64,17 +68,18 @@ void cetakStack(Stack *Data){
     if (isEmptyStack(Data)){
         return;
     };
-    int i;
+    int i, counter = 0;
 
     for (i = Data->top; i >= 1; i--){
-        if (i == 1){
-            cout << Data->data[i];
-            break;  
-        };
-        cout << Data->data[i] << " -> ";
-    };
+        counter = counter + 1;
 
-    cout << endl;
+        if (counter == 1){
+            cout << endl << counter << ". " << Data->namaBuku[i] << "   Top" << endl;
+        } else {
+            cout << counter << ". " << Data->namaBuku[i] << endl;
+        };
+
+    };
 
     return;
 };
@@ -91,23 +96,23 @@ void peekStack(Stack *Data, int position){
     position = position - 1;
     int idx = Data->top - position;
 
-    cout << "Posisi ke " << position + 1 << ": " << Data->data[idx] << endl;  
+    cout <<  endl <<"Nama Buku Posisi ke " << position + 1 << ": " << Data->namaBuku[idx] << endl;
 };
 
-void changeStack(Stack *Data, int position, int data){
+void changeStack(Stack *Data, int position, string namaBuku){
     if (isEmptyStack(Data)){
         return;
     };
 
     if (!( (position >= 1) && (position <= Data->top) )){
         return;
-    };  
+    };
 
     position = position - 1;
     int idx = Data->top - position;
 
-    int VeryTemp = Data->data[idx]; 
-    Data->data[idx] = data;
+    string VeryTemp = Data->namaBuku[idx];
+    Data->namaBuku[idx] = namaBuku;
 
-    cout << "Data Posisi ke " << position + 1 << ": " << VeryTemp << " Menjadi " << Data->data[idx] << endl;  
+    cout << endl << "Buku Posisi ke " << position + 1 << ": " << VeryTemp << " Menjadi " << Data->namaBuku[idx] << endl;
 };

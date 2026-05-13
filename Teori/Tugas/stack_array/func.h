@@ -11,7 +11,7 @@ using namespace std;
 #define max 50
 
 struct Stack{
-    int data[max + 1];
+    string namaBuku[max + 1];
     int top;
 };
 
@@ -20,10 +20,10 @@ Stack initStack();
 bool isEmptyStack(Stack *Data);
 bool isFullStack(Stack *Data);
 int CountStack(Stack *Data);
-void push (Stack *Data, int data);
-void pop (Stack *Data, int *rollback = nullptr);
+void push (Stack *Data, string namaBuku);
+void pop (Stack *Data, string *rollbackBuku = nullptr);
 void cetakStack(Stack *Data);
 void peekStack(Stack *Data, int position);
-void changeStack(Stack *Data, int position, int data);
+void changeStack(Stack *Data, int position, string namaBuku);
 
 #endif

@@ -10,9 +10,10 @@ Queue* initQueue(){
     return New;
 };
 
-Node *addNode(int data){
+Node *addNode(float sizeMB, string namaFile){
     Node *New = new Node;
-    New->data = data;
+    New->sizeMB = sizeMB;
+    New->namafile = namaFile;
     New->Next = nullptr;
     return New;
 };
@@ -21,15 +22,15 @@ bool isEmptyQueue(Queue *Data){
     return (Data->front == nullptr);
 };
 
-void enqueue(Queue *Data, int data){
-    Node *New = addNode(data);
+void enqueue(Queue *Data, float sizeMB, string namaFile){
+    Node *New = addNode(sizeMB, namaFile);
 
     if (Data->front == nullptr){
         Data->front = New;
         Data->rear = New;
         return;
     };
-    
+
     Node *Temp = Data->rear;
     Temp->Next = New;
     Data->rear = New;
@@ -37,7 +38,7 @@ void enqueue(Queue *Data, int data){
     return;
 };
 
-void dequeue(Queue *Data, int *rollback){
+void dequeue(Queue *Data, float *rlback_ksizeMB, string *rlback_namafile){
     if (isEmptyQueue(Data)){
         return;
     };
@@ -45,8 +46,12 @@ void dequeue(Queue *Data, int *rollback){
     Node *Temp = Data->front;
     Data->front = Temp->Next;
 
-    if (rollback != nullptr){
-        *rollback = Temp->data;
+    if (rlback_ksizeMB != nullptr){
+        *rlback_ksizeMB = Temp->sizeMB;
+    };
+
+    if (rlback_namafile != nullptr){
+        *rlback_namafile = Temp->namafile;
     };
 
     delete Temp;
@@ -63,12 +68,19 @@ void cetakQueue(Queue *Data){
         return;
     };
 
+    cout << endl;
+    int counter = 0;
     Node *Temp = Data->front;
-    while(Temp->Next != nullptr){
-        cout << Temp->data << " -> ";
+    while(Temp != nullptr){
+        counter = counter + 1;
+        if (counter == 1){
+            cout << counter << ". " << Temp->namafile << "  " << Temp->sizeMB << "MB" << "  " << "Front" << endl;
+        } else {
+            cout << counter << ". " << Temp->namafile << "  " << Temp->sizeMB << "MB" << endl;
+        };
+        
         Temp = Temp->Next;
     };
-    cout << Temp->data << "-> nullptr" << endl;
 
     return;
 };
