@@ -1,11 +1,12 @@
-DIR = Teori/Tugas/queue_sll
+# DIR = Teori/Tugas/queue_sll
 # DIR = Praktikum/Pertemuan_5/adtStack
-# DIR = Nyoba/linked_list
+DIR = Nyoba/monitoring
 
 CC = g++
 # CC = gcc
 
-CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
+CFLAGS = -I"$(DIR)" -lncursesw -lpthread -Wall -Wextra -Wshadow -std=c++17 -O2
+# CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
 # CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
 
 DEBUG_FLAGS = -g -O0
