@@ -1,0 +1,50 @@
+114,Mira,Teknik Komputer,3.52
+145,Raka,Informatika,3.81
+199,Wisnu,Informatika,3.87
+112,Karina,Informatika,3.91
+169,Rio,Informatika,3.8
+136,Intan,Informatika,3.89
+138,Kevin,Teknik Komputer,3.57
+116,Oscar,Sistem Informasi,3.58
+197,Uli,Sistem Informasi,3.62
+127,Zaki,Informatika,3.86
+176,Zidan,Sistem Informasi,3.7
+161,Ilham,Sistem Informasi,3.67
+168,Pipit,Teknik Komputer,3.54
+110,Indra,Sistem Informasi,3.49
+158,Farah,Sistem Informasi,3.71
+101,Andi,Informatika,3.78
+175,Yani,Informatika,3.92
+184,Hugo,Informatika,3.77
+139,Lutfi,Informatika,3.76
+140,Melati,Sistem Informasi,3.73
+189,Marco,Teknik Komputer,3.55
+113,Lina,Sistem Informasi,3.74
+130,Cindy,Informatika,3.95
+164,Lukman,Sistem Informasi,3.74
+179,Caca,Sistem Informasi,3.68
+153,Agus,Teknik Komputer,3.55
+191,Opal,Sistem Informasi,3.73
+190,Nadia,Informatika,3.93
+125,Xena,Sistem Informasi,3.72
+144,Qila,Teknik Komputer,3.51
+105,Dina,Teknik Komputer,3.45
+148,Ulfa,Informatika,3.87
+149,Vito,Sistem Informasi,3.62
+155,Cahyo,Sistem Informasi,3.6
+109,Hana,Informatika,3.88
+187,Karen,Informatika,3.86
+183,Gina,Teknik Komputer,3.57
+106,Eka,Informatika,3.6
+121,Tono,Informatika,3.77
+118,Qori,Informatika,3.84
+134,Gilang,Sistem Informasi,3.7
+123,Vina,Teknik Komputer,3.56
+193,Qais,Informatika,3.82
+126,Yoga,Teknik Komputer,3.5
+159,Gerry,Teknik Komputer,3.52
+170,Sarah,Sistem Informasi,3.69
+117,Putri,Teknik Komputer,3.62
+181,Evi,Informatika,3.9
+120,Salsa,Teknik Komputer,3.47
+166,Nina,Informatika,3.91

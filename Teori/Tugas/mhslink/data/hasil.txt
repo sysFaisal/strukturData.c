@@ -1,0 +1,28 @@
+130,Cindy,Informatika,3.95
+190,Nadia,Informatika,3.93
+175,Yani,Informatika,3.92
+166,Nina,Informatika,3.91
+112,Karina,Informatika,3.91
+181,Evi,Informatika,3.9
+136,Intan,Informatika,3.89
+109,Hana,Informatika,3.88
+148,Ulfa,Informatika,3.87
+199,Wisnu,Informatika,3.87
+187,Karen,Informatika,3.86
+127,Zaki,Informatika,3.86
+118,Qori,Informatika,3.84
+193,Qais,Informatika,3.82
+145,Raka,Informatika,3.81
+169,Rio,Informatika,3.8
+101,Andi,Informatika,3.78
+121,Tono,Informatika,3.77
+184,Hugo,Informatika,3.77
+139,Lutfi,Informatika,3.76
+164,Lukman,Sistem Informasi,3.74
+113,Lina,Sistem Informasi,3.74
+191,Opal,Sistem Informasi,3.73
+140,Melati,Sistem Informasi,3.73
+125,Xena,Sistem Informasi,3.72
+158,Farah,Sistem Informasi,3.71
+134,Gilang,Sistem Informasi,3.7
+176,Zidan,Sistem Informasi,3.7

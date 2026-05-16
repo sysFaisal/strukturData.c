@@ -1,8 +1,6 @@
-#include <iostream>
 #include <stdlib.h>
 #include <fstream>
 #include <string>
-#include <string.h>
 #include <stdbool.h>
 #include "func.h"
 
@@ -42,6 +40,6 @@ int main(){
     cetakNode(L);
     saveToFile(L, write);
 
-    getchar(); 
+    getchar();
     getchar();
 };
