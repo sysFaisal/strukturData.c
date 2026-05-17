@@ -1,39 +1,56 @@
-DIR = Teori/Tugas/mhslink
-# DIR = Praktikum/Pertemuan_5/adtStack
+# DIR = Teori/Tugas/mhslink
+DIR = Praktikum/Pertemuan_6/alter_1
 # DIR = Nyoba/monitoring
 
-CC = g++
-# CC = gcc
+SRC_C   = $(wildcard $(DIR)/*.c)
+SRC_CPP = $(wildcard $(DIR)/*.cpp)
 
-# CFLAGS = -I"$(DIR)" -lncursesw -lpthread -Wall -Wextra -Wshadow -std=c++17 -O2
-CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
-# CFLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
+# FLAGS = -I"$(DIR)" -lncursesw -lpthread -Wall -Wextra -Wshadow -std=c++17 -O2
 
-DEBUG_FLAGS = -g -O0
+ifeq ($(SRC_CPP),)
 
-# SRC = $(wildcard $(DIR)/*.c)
-SRC = $(wildcard $(DIR)/*.cpp)
+    COMPILER = gcc
+    SRC      = $(SRC_C)
+
+    FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
+
+    DEBUG_FLAGS = -g -O0
+
+else
+
+    COMPILER = g++
+    SRC      = $(SRC_C) $(SRC_CPP)
+
+    FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
+
+    DEBUG_FLAGS = -g -O0
+
+endif
 
 ifeq ($(OS),Windows_NT)
-    # Pengaturan Windows
 
     TARGET = program.exe
     LDFLAGS = -lm -static-libgcc
+
     RM = if exist $(TARGET) del $(TARGET)
-    FIX_PATH = $(subst /,\,$1)
+
     CLEAN_MSG = @echo Delete file program ...
+
 else
-    # Pengaturan Linux/macOS
 
     TARGET = program
     LDFLAGS = -lm
+
     RM = rm -f $(TARGET)
-    FIX_PATH = $1
+
     CLEAN_MSG = @echo "Delete file program ..."
+
 endif
 
 all:
-	$(CC) $(CFLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
+	@echo "Compiler : $(COMPILER)"
+	@echo "Source   : $(SRC)"
+	$(COMPILER) $(FLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
 
 run: all
 	@echo --------------------------------
@@ -45,7 +62,7 @@ run: all
 
 debug_build:
 	@echo "Creating DEBUG build..."
-	$(CC) $(CFLAGS) $(DEBUG_FLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
+	$(COMPILER) $(FLAGS) $(DEBUG_FLAGS) $(SRC) -o $(TARGET) $(LDFLAGS)
 	@echo "Ready for debugging!"
 
 clean:
