@@ -1,5 +1,5 @@
 # DIR = Teori/Tugas/mhslink
-DIR = Praktikum/Pertemuan_6/alter_1
+DIR = Praktikum/Pertemuan_7/tugas_1
 # DIR = Nyoba/monitoring
 
 SRC_C   = $(wildcard $(DIR)/*.c)

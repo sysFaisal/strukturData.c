@@ -7,45 +7,48 @@ Tanggal : 18/5/26
 #include "queue.h"
 #include "boolean.h"
 #include "stdio.h"
-#define Nil 0
+#define Nil -1
 #define MaxEl 10
 
 void CreateQueue(Queue *Q){
     Q->HEAD = Nil;
     Q->TAIL = Nil;
     int counter = 0;
-    for (counter = 0; counter <= MaxEl; counter++){
+    for (counter = 0; counter < MaxEl; counter++){
         Q->T[counter] = Nil;
     };
 };
 
 boolean IsQueuekEmpty (Queue Q){
-    return ((Q.HEAD > Q.TAIL) || ((Q.HEAD == Nil) && (Q.TAIL == Nil)) );
+    return (Q.HEAD == Nil);
 };
 
 int NBElmt(Queue Q){
     if (IsQueuekEmpty(Q)){
         return 0;
     } else {
-        return (Q.TAIL - Q.HEAD + 1);
+        return ((Q.TAIL - Q.HEAD + MaxEl) % MaxEl + 1);
     }
 };
 
 boolean IsQueuekFull(Queue Q){
-    return (Q.TAIL == MaxEl);
+    int nextTail = Q.TAIL + 1;
+    if (nextTail == MaxEl) nextTail = 0;
+    return (nextTail == Q.HEAD);
 };
 
 void AddQueue (Queue *Q, infotype X){
 
     if (IsQueuekEmpty(*(Q))){
-        Q->HEAD = 1;
-        Q->TAIL = 1;
+        Q->HEAD = 0;
+        Q->TAIL = 0;
         Q->T[Q->TAIL] = X;
         return;
     };
 
     if (!IsQueuekFull(*(Q))){
         Q->TAIL = Q->TAIL + 1;
+        if (Q->TAIL == MaxEl) Q->TAIL = 0;
         Q->T[Q->TAIL] = X;
         return;
     };
@@ -61,10 +64,12 @@ void DelQueue (Queue *Q, infotype *X){
 
     *X = Q->T[Q->HEAD];
     Q->T[Q->HEAD] = Nil;
-    Q->HEAD = Q->HEAD + 1;
-
-    if (Q->HEAD > Q->TAIL){
+    
+    if (Q->HEAD == Q->TAIL){
         CreateQueue(Q);
+    } else {
+        Q->HEAD = Q->HEAD + 1;
+        if (Q->HEAD == MaxEl) Q->HEAD = 0;
     };
     
     return;
@@ -77,9 +82,12 @@ void PrintQueueInfo (Queue S){
     };
 
     printf("Isi Queue : ");
-    int counter = 0;
-    for (counter = S.HEAD; counter <= S.TAIL; counter++){
+    int counter = S.HEAD;
+    while (1){
         printf("%d ", S.T[counter]);
+        if (counter == S.TAIL) break;
+        counter = counter + 1;
+        if (counter == MaxEl) counter = 0;
     };
     printf("\n");
 
@@ -90,11 +98,14 @@ boolean isInfoKetemu(Queue S, infotype X){
         return false;
     };
 
-    int counter = 0;
-    for (counter = S.HEAD; counter <= S.TAIL; counter++){
+    int counter = S.HEAD;
+    while (1){
         if (S.T[counter] == X){
             return true;
         };
+        if (counter == S.TAIL) break;
+        counter = counter + 1;
+        if (counter == MaxEl) counter = 0;
     };
 
     return false;
