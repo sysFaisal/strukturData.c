@@ -16,6 +16,8 @@ int main(){
 
     do {
         system("clear");
+        system("cls");
+        printf("== Queue Non Circular Alternatif 2 ==\n");
         printf("1. AddQueue\n");
         printf("2. DelQueue\n");
         printf("3. CetakQueue\n");

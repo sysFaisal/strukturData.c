@@ -1,4 +1,4 @@
-/* Program : queuecircular.h
+/* Program : queuecircular2.c
 Author : (2550081098, Faisal Fajari)
 Kelas : E
 Deskripsi: Header file dari prototype queue
@@ -6,7 +6,7 @@ Tanggal : 20/5/2026
 */
 #include "boolean.h"
 #include <stdio.h>
-#include "queue.h"
+#include "queuecircular2.h"
 #include <stdlib.h>
 
 void CreateQueue(Queue *Q){

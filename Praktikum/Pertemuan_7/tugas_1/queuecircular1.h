@@ -1,4 +1,4 @@
-/* Program : queue.h
+/* Program : queuecircular1.h
 Author : 2550080198_Faisal Fajari
 Kelas : E
 Deskripsi: Header file dari prototype queue

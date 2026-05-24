@@ -8,7 +8,7 @@ Tanggal : 18/5/26
 #define _ QUEUE _H
 #include "boolean.h"
 #define Nil 0
-#define MaxEl 2
+#define MaxEl 10
 #define idxUndef 999;
 
 #define Head(Q) (Q).HEAD

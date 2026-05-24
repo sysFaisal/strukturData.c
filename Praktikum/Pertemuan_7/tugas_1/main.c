@@ -1,11 +1,11 @@
-/* Program : queue.h
+/* Program : main.h
 Author : 2550080198_Faisal Fajari
 Kelas : E
 Deskripsi: Main Driver file dari prototype queue
 Tanggal : 18/5/26
 */
 #include <stdio.h>
-#include "queue.h"
+#include "queuecircular1.h"
 #include <stdlib.h>
 
 int main(){
@@ -16,6 +16,8 @@ int main(){
 
     do {
         system("clear");
+        system("cls");
+        printf("== Queue Circular Array ==\n");
         printf("1. AddQueue\n");
         printf("2. DelQueue\n");
         printf("3. CetakQueue\n");

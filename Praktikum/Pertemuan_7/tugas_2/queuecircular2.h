@@ -1,4 +1,4 @@
-/* Program : queuecircular.h
+/* Program : queuecircular2.h
 Author : (2550081098, Faisal Fajari)
 Kelas : E
 Deskripsi: Header file dari prototype queue
@@ -9,7 +9,7 @@ Tanggal : 20/5/2026
 #include "boolean.h"
 #include <stdio.h>
 #define Nil NULL
-#define MaxEl 2
+#define MaxEl 10
 
 #define Head(Q) (Q).HEAD
 #define Tail(Q) (Q).TAIL

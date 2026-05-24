@@ -1,10 +1,10 @@
-/* Program : queue.h
+/* Program : queuecircular1.c
 Author : 2550080198_Faisal Fajari
 Kelas : E
 Deskripsi: Body file dari prototype queue
 Tanggal : 18/5/26
 */
-#include "queue.h"
+#include "queuecircular1.h"
 #include "boolean.h"
 #include "stdio.h"
 #define Nil -1
@@ -33,7 +33,9 @@ int NBElmt(Queue Q){
 
 boolean IsQueuekFull(Queue Q){
     int nextTail = Q.TAIL + 1;
-    if (nextTail == MaxEl) nextTail = 0;
+    if (nextTail == MaxEl){
+        nextTail = 0;
+    }; 
     return (nextTail == Q.HEAD);
 };
 
@@ -48,7 +50,9 @@ void AddQueue (Queue *Q, infotype X){
 
     if (!IsQueuekFull(*(Q))){
         Q->TAIL = Q->TAIL + 1;
-        if (Q->TAIL == MaxEl) Q->TAIL = 0;
+        if (Q->TAIL == MaxEl){
+            Q->TAIL = 0;
+        };
         Q->T[Q->TAIL] = X;
         return;
     };
@@ -69,7 +73,9 @@ void DelQueue (Queue *Q, infotype *X){
         CreateQueue(Q);
     } else {
         Q->HEAD = Q->HEAD + 1;
-        if (Q->HEAD == MaxEl) Q->HEAD = 0;
+        if (Q->HEAD == MaxEl){
+            Q->HEAD = 0;
+        };
     };
     
     return;
@@ -85,9 +91,13 @@ void PrintQueueInfo (Queue S){
     int counter = S.HEAD;
     while (1){
         printf("%d ", S.T[counter]);
-        if (counter == S.TAIL) break;
+        if (counter == S.TAIL) {
+            break;
+        };
         counter = counter + 1;
-        if (counter == MaxEl) counter = 0;
+        if (counter == MaxEl){
+            counter = 0;
+        } 
     };
     printf("\n");
 
@@ -103,9 +113,13 @@ boolean isInfoKetemu(Queue S, infotype X){
         if (S.T[counter] == X){
             return true;
         };
-        if (counter == S.TAIL) break;
+        if (counter == S.TAIL){
+            break;
+        };
         counter = counter + 1;
-        if (counter == MaxEl) counter = 0;
+        if (counter == MaxEl){
+            counter = 0;
+        };
     };
 
     return false;
