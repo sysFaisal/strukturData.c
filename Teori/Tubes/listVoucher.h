@@ -1,16 +1,21 @@
 #ifndef _ListVoucher_H
 #define _ListVoucher_H
+#include <ios>
 #include <iostream>
+#include <iterator>
 #include <string>
 #include <fstream>
 #include <sstream>
 #include <stdlib.h>
+#include <iomanip>
+#include "externalUtils.h"
 
 using namespace std;
-#define fileVouncher "Teori/Tubes/dataVoucher.txt"
+#define fileVouncher "Teori/Tubes/db/dataVoucher.txt"
+#define fileSaveVouncher "Teori/Tubes/dataVoucher.txt"
 
 struct voucherPulsa{
-    string kode;
+    string kodePulsa;
     string provider;
     int nominal;
     int harga;
@@ -32,19 +37,36 @@ inline linkList createList(){
     return New;
 };
 
-inline voucherPulsa* alokasiList(string provider, string kode, 
+inline voucherPulsa* alokasiList(string provider, string kode,
     int nominal, int harga, int stock){
         voucherPulsa* New = new voucherPulsa;
         New->provider = provider;
-        New->kode = kode;
+        New->kodePulsa = kode;
         New->nominal = nominal;
         New->harga = harga;
         New->stock = stock;
         return New;
 };
 
+
 inline bool isEmptyList(linkList L){
     return (L.front == nullptr);
+};
+
+inline bool cariKodePulsa(linkList L, string kodePulsa){
+    if (isEmptyList(L)){
+        return false;
+    };
+
+    voucherPulsa *Temp = L.front;
+    while(Temp != nullptr){
+        if(Temp->kodePulsa == kodePulsa){
+            return true;
+        };
+        Temp = Temp->next;
+    };
+
+    return false;
 };
 
 inline int getJumlahList(linkList L){
@@ -52,7 +74,7 @@ inline int getJumlahList(linkList L){
 };
 
 inline void saveFileList(linkList L){
-    ofstream file(fileVouncher);
+    ofstream file(fileSaveVouncher);
 
     if (!file.is_open()){
         return;
@@ -60,16 +82,18 @@ inline void saveFileList(linkList L){
 
     voucherPulsa *Temp = L.front;
     while (Temp != nullptr){
-        file << Temp->kode << ',' << Temp->provider << ',' 
-        << Temp->nominal << ',' << Temp->harga << ',' << Temp->stock 
-        << endl;
+        file << Temp->kodePulsa << ','
+        << Temp->provider << ','
+        << Temp->nominal << ','
+        << Temp->harga << ','
+        << Temp->stock << endl;
         Temp = Temp->next;
     };
 
     file.close();
 };
 
-inline void addFirstList(linkList *L, string provider, string kode, 
+inline void addFirstList(linkList *L, string provider, string kode,
     int nominal, int harga, int stock){
 
     voucherPulsa *New = alokasiList(provider, kode, nominal, harga, stock);
@@ -80,22 +104,22 @@ inline void addFirstList(linkList *L, string provider, string kode,
         return;
     };
 
-    
+
     New->next = L->front;
     L->front = New;
     L->counter = L->counter + 1;
 
 };
 
-inline void addLastList(linkList *L, string provider, string kode, 
+inline void addLastList(linkList *L, string provider, string kode,
     int nominal, int harga, int stock){
-    
+
     voucherPulsa *New = alokasiList(provider, kode, nominal, harga, stock);
     if (isEmptyList(*(L))){
         addFirstList(L, provider, kode, nominal, harga, stock);
         return;
     };
-    
+
     L->rear->next = New;
     L->rear = New;
     L->counter = L->counter + 1;
@@ -120,7 +144,7 @@ inline void loadStoack(linkList *L){
         getline(ss, harga, ',');
         getline(ss, stock);
 
-        addLastList(L, provider, kode, 
+        addLastList(L, provider, kode,
             stoi(nominal), stoi(harga), stoi(stock));
     };
 
@@ -136,7 +160,7 @@ inline voucherPulsa* cariVoucher(linkList *L, string kode){
 
     voucherPulsa *Temp = L->front;
     while(Temp != nullptr){
-        if (Temp->kode == kode){
+        if (Temp->kodePulsa == kode){
             return Temp;
         };
         Temp = Temp->next;
@@ -144,44 +168,60 @@ inline voucherPulsa* cariVoucher(linkList *L, string kode){
     return nullptr;
 };
 
-inline void editStock(linkList *L, string kode, int minstock){
+inline bool editStock(linkList *L, string kode, int minstock, int *actualSell, int *harga){
     if (isEmptyList(*(L))){
-        return;
+        return false;
     };
 
     voucherPulsa *Temp = cariVoucher(L, kode);
     if (Temp != nullptr){
-        int VeryTemp = Temp->stock - minstock;
 
-        if (VeryTemp <= 0){
-            cout << "Gagal Melakukan Transaksi!!" << endl;
-            return;
+        if (Temp->stock < minstock){
+            *actualSell = Temp->stock;
+            *harga = Temp->harga;
+            Temp->stock = 0;
+            return true;
         };
 
-        Temp->stock = VeryTemp;
-        saveFileList(*(L));
-        return;
+        Temp->stock = Temp->stock - minstock;
+        *harga = Temp->harga;
+        *actualSell = minstock;
+        return true;
     };
 
-    return;
-};
 
+    return false;
+};
 
 inline void cetaklinkList(linkList L){
     if (isEmptyList(L)){
         return;
     };
-    
+
     voucherPulsa *Temp = L.front;
     int counter = 0;
 
+    cout << string(3, '=') << " List Voucher " << string(48, '=') << endl;
+
+    printColumn("No", 5);
+    printColumn("Kode Pulsa", 12);
+    printColumn("Provider", 18);
+    printColumn("Nominal", 12);
+    printColumn("Harga", 12);
+    printColumn("Stock", 8);
+    cout << endl;
+
     while(Temp != nullptr){
         counter++;
-        cout << counter << ". " << Temp->kode << "  " << Temp->provider 
-        << "  " << Temp->nominal << "  " << Temp->harga << "  " << Temp->stock << endl;
+        printColumn(to_string(counter), 5);
+        printColumn(Temp->kodePulsa, 12);
+        printColumn(Temp->provider, 18);
+        printColumn(to_string(Temp->nominal), 12);
+        printColumn(to_string(Temp->harga), 12);
+        printColumn(to_string(Temp->stock), 8);
+        cout << endl;
         Temp = Temp->next;
     };
     cout << endl;
 };
 #endif
-

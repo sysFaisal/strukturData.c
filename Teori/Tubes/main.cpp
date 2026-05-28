@@ -1,40 +1,21 @@
 #include <iostream>
-#include "listvoucher.h"
-#include "queuecostumer.h"
-#include "stackhistory.h"
+#include "listVoucher.h"
+#include "queueCostumer.h"
+#include "stackHistory.h"
+#include "tabelLaporan.h"
+#include "externalUtils.h"
 #include <string>
 
 using namespace std;
 
-bool isDigit(string text, bool cekPanjang){
-    if (text.empty()){
-        return false;
-    };
-
-    if (cekPanjang && text.length() > 9){
-        return false;
-    };
-    
-
-    int counter;
-    for (counter = 0; counter < text.length(); counter++){
-        
-        if (!(text[counter] >= '0' && text[counter] <= '9')){
-            return false;
-        };
-
-    };
-    return true;
-};
-
 void tambahVoucher(linkList *D){
     string kode, provider ,
     nominal, harga, stock;
-    
+
     char fix;
     cout << "== tambahVoucher ==" << endl;
     while(1){
-        
+
         cout << "Nama Provider : ";
         getline(cin, provider);
         cout << "Nama nominal pulsa : ";
@@ -65,7 +46,7 @@ void tambahVoucher(linkList *D){
             return;
         };
     };
-    
+
 };
 
 void enqueueCos(Costumer *C, linkList *D){
@@ -79,10 +60,18 @@ void enqueueCos(Costumer *C, linkList *D){
         getline(cin, nama);
         cout << "No Hp : ";
         getline(cin, noHP);
-        cout << "Kode Pusa :";
+        cout << "Kode Pusa : ";
         getline(cin, kodePulsa);
         cout << "Jumlah : ";
         getline(cin, jumlah);
+
+        if (!cariKodePulsa(*(D), kodePulsa)){
+            cout << "Kode Pulsa Tidak dapat ditemukan!" << endl;
+            cout << "Tekan Apa saja untuk Keluar...";
+            cin.ignore();
+            cin.get();
+            return;
+        };
 
         if (!(isDigit(noHP, false) && isDigit(jumlah, true))){
             cout << "Gagal Memasukkan!" << endl;
@@ -92,7 +81,7 @@ void enqueueCos(Costumer *C, linkList *D){
             return;
         };
 
-        enqueue(C, nama, noHP, kodePulsa, stoi(jumlah));
+        enqueue(C, nama, noHP, kodePulsa, getTanggal() ,stoi(jumlah));
 
         cout << "Lagi? (y/n) : ";
         cin >> fix;
@@ -104,11 +93,13 @@ void enqueueCos(Costumer *C, linkList *D){
     }
 };
 
-void dequeueCos(Costumer *C, linkList *D){
+void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
 
-    string nama, noHp, kodePulsa; 
-    int minstock;  char fix;
+    string nama, noHp, kodePulsa;
+    int minStock = 0;  char fix;
+    int actualSell = 0, actualHarga = 0;
 
+    string idTransaksi, tanggal;
     cetakCostumer(*(C));
     while(1){
 
@@ -117,9 +108,9 @@ void dequeueCos(Costumer *C, linkList *D){
             cout << "Tekan Apa saja untuk Keluar...";
             cin.ignore();
             cin.get();
-            return;    
+            return;
         };
-           
+
         cout << "Proses Antrian? (y/n) : " ;
         cin >> fix;
         cin.ignore();
@@ -127,25 +118,63 @@ void dequeueCos(Costumer *C, linkList *D){
         if (!(fix == 'y' || fix == 'Y')){
             return;
         };
-        
-        cout << "Isi Sekarang = " << endl;
-        dequeue(C, &nama, &noHp, &kodePulsa, &minstock);
-        editStock(D, kodePulsa, minstock);
+
+        dequeue(C, &nama, &noHp, &kodePulsa, &minStock);
+        editStock(D, kodePulsa, minStock, &actualSell, &actualHarga);
+
+        idTransaksi = generateID();
+        tanggal = getTanggal();
+
+        if (actualSell == 0){
+
+            cout << "== Struk Belanja ==" << endl;
+            cout << "Status Pembayaran : Gagal" << endl;
+            cout << "id Transaksi : " << idTransaksi << endl;
+            cout << "nama Pembeli : " << nama << endl;
+            cout << "kode Pulsa : " << kodePulsa << endl;
+            cout << "Tanggal : " << tanggal << endl;
+            cout << "Jumlah : " << actualSell << endl;
+            cout << "total Harga : " << minStock * actualHarga << endl << endl;
+
+            pushHistory(H, idTransaksi, nama, noHp, kodePulsa, tanggal, actualSell, actualSell * actualHarga, "Gagal");
+            saveFileHistory(*(H));
+            saveFileList(*(D));
+
+        } else {
+
+            cout << "== Struk Belanja ==" << endl;
+            cout << "Status Pembayaran : Berhasil" << endl;
+            cout << "id Transaksi : " << idTransaksi << endl;
+            cout << "nama Pembeli : " << nama << endl;
+            cout << "kode Pulsa : " << kodePulsa << endl;
+            cout << "Tanggal : " << tanggal << endl;
+            cout << "Jumlah : " << actualSell << endl;
+            cout << "total Harga : " << actualSell * actualHarga << endl << endl;
+
+            pushHistory(H, idTransaksi, nama, noHp, kodePulsa, tanggal, actualSell, actualSell * actualHarga, "Berhasil");
+            pushTabel(T, tanggal, kodePulsa, actualSell, actualSell * actualHarga);
+            saveFileHistory(*(H));
+            saveFileList(*(D));
+            saveFileTabel(*(T));
+
+        };
 
         cetakCostumer(*(C));
-
 
     }
 };
 
 
 int main (){
-    linkList D = createList();
-    Costumer C = createQueue();
-    History D = createHistory();
-    loadStoack(&D);
-    enqueueCos(&C, &D);
-    dequeueCos(&C, &D);
+    History H = createHistory(); loadHistory(&H);
+    linkList D = createList(); loadStoack(&D);
+    Costumer C = createQueue(); loadQueue(&C);
+    tabelLaporan T = createTabel(); //loadTabel(&T);
+
+    dequeueCos(&C, &D, &H, &T);
     cetaklinkList(D);
+    cetakCostumer(C);
+    cetakHistory(H);
+    cetakTabel(T);
 
 };
