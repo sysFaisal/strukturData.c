@@ -111,7 +111,9 @@ inline void loadTabel(tabelLaporan *T){
         getline(ss, jumlah, ',');
         getline(ss, totalHarga);
 
-        pushTabel(T, tanggal, kodePulsa, stoi(jumlah), stoll(totalHarga));
+        if (!tanggal.empty() && !kodePulsa.empty() && isDigit(jumlah, false) && isDigit(totalHarga, false)){
+            pushTabel(T, tanggal, kodePulsa, stoi(jumlah), stoll(totalHarga));
+        }
     };
 
     file.close();

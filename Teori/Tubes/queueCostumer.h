@@ -40,6 +40,7 @@ inline QueueCos* alokasiQueue(string nama, string noHp, string kodePulsa, string
     New->kodePulsa = kodePulsa;
     New->jumlah = jumlah;
     New->tanggal = Tanggal;
+    New->next = nullptr;
     return New;
 };
 
@@ -79,8 +80,17 @@ inline void loadQueue(Costumer *L){
         getline(ss, jam, ',');
         getline(ss, jumlah);
 
-        string date = Tanggal + "," + jam;
-        enqueue(L, nama, noHP, kodeVoucher, date , stoi(jumlah));
+        if (!nama.empty() && 
+            !noHP.empty() && 
+            !kodeVoucher.empty() && 
+            !Tanggal.empty() &&
+            !jam.empty() && 
+            isDigit(jumlah, false)){
+
+            string date = Tanggal + "," + jam;
+            enqueue(L, nama, noHP, kodeVoucher, date , stoi(jumlah));
+        };
+        
     };
 
     file.close();
@@ -129,6 +139,7 @@ inline void cetakCostumer(Costumer L){
 
     int counter = 0;
     QueueCos *Temp = L.front;
+
     while(Temp != nullptr){
         counter = counter + 1;
 

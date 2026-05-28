@@ -93,8 +93,10 @@ inline void loadHistory(History *L){
         getline(ss, jam, ',');
         getline(ss, status);
 
-        string date = Tanggal + "," + jam;
-        pushHistory(L, idTransaksi, nama, noHP, kodePulsa, date, stoi(jumlah), stoll(totalHarga), status);
+        if (!idTransaksi.empty() && !nama.empty() && isDigit(jumlah, false) && isDigit(totalHarga, false)){
+            string date = Tanggal + "," + jam;
+            pushHistory(L, idTransaksi, nama, noHP, kodePulsa, date, stoi(jumlah), stoll(totalHarga), status);
+        }
     };
 
     file.close();

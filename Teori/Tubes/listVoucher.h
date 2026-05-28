@@ -144,8 +144,20 @@ inline void loadStoack(linkList *L){
         getline(ss, harga, ',');
         getline(ss, stock);
 
-        addLastList(L, provider, kode,
+        if (
+            !kode.empty() &&
+            !provider.empty() &&
+            isDigit(nominal, true) &&
+            isDigit(harga, true) &&
+            isDigit(stock, true)
+            ){
+
+            addLastList(L, provider, kode,
             stoi(nominal), stoi(harga), stoi(stock));
+            
+        };
+
+
     };
 
     file.close();
