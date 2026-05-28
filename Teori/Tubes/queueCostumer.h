@@ -10,6 +10,7 @@
 
 using namespace std;
 #define fileQueue "Teori/Tubes/db/dataQueue.txt"
+#define fileSaveQueue "Teori/Tubes/db/dataQueue.txt"
 
 struct QueueCos{
     string nama;
@@ -119,6 +120,27 @@ inline bool dequeue(Costumer *L, string *nama, string *noHp, string *kodePulsa, 
     L->front = L->front->next;
     free (Temp);
     return true;
+};
+
+inline void saveQueueCos(Costumer L){
+    ofstream file(fileSaveQueue);
+
+    if (!file.is_open()){
+        return;
+    };
+
+    QueueCos *Temp = L.front;
+    while (Temp != nullptr){
+        file 
+        << Temp->nama << ','
+        << Temp->noHP << ','
+        << Temp->kodePulsa << ','
+        << Temp->tanggal << ','
+        << Temp->jumlah << endl;
+        Temp = Temp->next;
+    };
+
+    file.close();
 };
 
 inline void cetakCostumer(Costumer L){

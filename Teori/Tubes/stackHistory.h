@@ -11,7 +11,7 @@
 
 using namespace std;
 #define fileHistory "Teori/Tubes/db/dataHistory.txt"
-#define fileSaveHistory "Teori/Tubes/dataHistory.txt"
+#define fileSaveHistory "Teori/Tubes/db/dataHistory.txt"
 
 struct stackHistory{
     string idTransaksi;

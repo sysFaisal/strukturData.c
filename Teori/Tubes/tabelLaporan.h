@@ -9,7 +9,7 @@
 #include <stdlib.h>
 
 #define fileTabel "Teori/Tubes/db/dataTabel.txt"
-#define fileSaveTabel "Teori/Tubes/dataTabel.txt"
+#define fileSaveTabel "Teori/Tubes/db/dataTabel.txt"
 
 
 using namespace std;
@@ -103,17 +103,23 @@ inline void loadTabel(tabelLaporan *T){
     string line;
     while (getline(file, line)){
 
-        string tanggal, kodePulsa, jumlah, totalHarga;
+        string tanggal, jam, kodePulsa, jumlah, totalHarga;
         stringstream ss(line);
 
         getline(ss, tanggal, ',');
+        getline(ss, jam, ',');
         getline(ss, kodePulsa, ',');
         getline(ss, jumlah, ',');
         getline(ss, totalHarga);
 
-        if (!tanggal.empty() && !kodePulsa.empty() && isDigit(jumlah, false) && isDigit(totalHarga, false)){
-            pushTabel(T, tanggal, kodePulsa, stoi(jumlah), stoll(totalHarga));
-        }
+        string date;
+        if (!tanggal.empty() && !jam.empty()){
+            date = tanggal + ',' + jam;
+        };
+        
+        if (!date.empty() && !kodePulsa.empty() && isDigit(jumlah, false) && isDigit(totalHarga, false)){
+            pushTabel(T, date, kodePulsa, stoi(jumlah), stoll(totalHarga));
+        };
     };
 
     file.close();

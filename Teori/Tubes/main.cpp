@@ -63,13 +63,14 @@ void enqueueCos(Costumer *C, linkList *D){
     };
 
     while(1){
+        cout << endl;
         cetaklinkList(*(D));
-        cout << endl << "== antrianCostumer ==" << endl;
+        cout << "== antrianCostumer ==" << endl;
         cout << "Nama : ";
         getline(cin, nama);
         cout << "No Hp : ";
         getline(cin, noHP);
-        cout << "Kode Pusa : ";
+        cout << "Kode Pulsa : ";
         getline(cin, kodePulsa);
         cout << "Jumlah : ";
         getline(cin, jumlah);
@@ -91,6 +92,7 @@ void enqueueCos(Costumer *C, linkList *D){
         };
 
         enqueue(C, nama, noHP, kodePulsa, getTanggal() ,stoi(jumlah));
+        saveQueueCos(*(C));
 
         cout << "Lagi? (y/n) : ";
         cin >> fix;
@@ -109,11 +111,12 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
     int actualSell = 0, actualHarga = 0;
 
     string idTransaksi, tanggal;
+    cout << endl;
     cetakCostumer(*(C));
     while(1){
 
         if (isEmptyList(*(D))){
-            cout << endl << "Voucher Pulsa Kosong..." << endl;
+            cout << "Voucher Pulsa Kosong..." << endl;
             cout << "Tekan Apa saja untuk Keluar...";
             cin.ignore();
             cin.get();
@@ -121,14 +124,13 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
         };
 
         if (isEmptyQueue(*(C))){
-            cout << endl << "Queue Kosong..." << endl;
+            cout << "Queue Kosong..." << endl;
             cout << "Tekan Apa saja untuk Keluar...";
             cin.ignore();
             cin.get();
             return;
         };
-        
-        cin.ignore();
+
         cout << "Proses Antrian? (y/n) : " ;
         cin >> fix;
         cin.ignore();
@@ -138,11 +140,12 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
         };
 
         dequeue(C, &nama, &noHp, &kodePulsa, &minStock);
-        editStock(D, kodePulsa, minStock, &actualSell, &actualHarga);
+        kurangiStock(D, kodePulsa, minStock, &actualSell, &actualHarga);
 
         idTransaksi = generateID();
         tanggal = getTanggal();
 
+        cout << endl;
         if (actualSell == 0){
 
             cout << "== Struk Belanja ==" << endl;
@@ -151,12 +154,13 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
             cout << "nama Pembeli : " << nama << endl;
             cout << "kode Pulsa : " << kodePulsa << endl;
             cout << "Tanggal : " << tanggal << endl;
-            cout << "Jumlah : " << actualSell << endl;
+            cout << "Jumlah : " << minStock << endl;
             cout << "total Harga : " << minStock * actualHarga << endl << endl;
 
-            pushHistory(H, idTransaksi, nama, noHp, kodePulsa, tanggal, actualSell, actualSell * actualHarga, "Gagal");
+            pushHistory(H, idTransaksi, nama, noHp, kodePulsa, tanggal, minStock, minStock * actualHarga, "Gagal");
             saveFileHistory(*(H));
             saveFileList(*(D));
+            saveQueueCos(*(C));
 
         } else {
 
@@ -174,6 +178,7 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
             saveFileHistory(*(H));
             saveFileList(*(D));
             saveFileTabel(*(T));
+            saveQueueCos(*(C));
 
         };
 
@@ -182,12 +187,55 @@ void dequeueCos(Costumer *C, linkList *D, History *H, tabelLaporan *T){
     }
 };
 
+void editStock(linkList *D){
+    if(isEmptyList(*(D))){
+        return;
+    };
+
+    cout << endl;
+    cetaklinkList(*(D));
+    
+    string kodePulsa, stock;
+    cout << "== editStock Voucher ==" << endl;
+    cout << "Masukan KodePulsa : ";
+
+    getline(cin, kodePulsa);
+    voucherPulsa *Temp =  cariVoucher(D, kodePulsa);
+
+    if (Temp == nullptr){
+        cout << endl <<"Kode Pulsa Tidak ditemukan!" << endl;
+        cout << "Tekan Apa saja untuk Keluar..";
+        cin.ignore();
+        cin.get();
+        return;
+    };
+
+    cout << "Masukan Stock : ";
+    getline(cin, stock);
+
+    if(!isDigit(stock, true)){
+        cout << endl << "Gagal Menambahkan!" << endl;
+        cout << "Tekan Apa saja untuk Keluar..";
+        cin.ignore();
+        cin.get();
+        return;
+    };
+    
+    Temp->stock = stoi(stock);
+    cout << endl << "Berhasil Mengedit Stock!.." << endl;
+    saveFileList(*(D));
+
+    cout << "Tekan Apa saja untuk Keluar..";
+    cin.ignore();
+    cin.get();
+
+};
 
 int main (){
-    History H = createHistory(); //loadHistory(&H);
-    linkList D = createList(); //loadStoack(&D);
-    Costumer C = createQueue(); //loadQueue(&C);
-    tabelLaporan T = createTabel(); //loadTabel(&T);
+    History H = createHistory(); loadHistory(&H);
+    linkList D = createList(); loadStoack(&D);
+    Costumer C = createQueue(); loadQueue(&C);
+    tabelLaporan T = createTabel(); loadTabel(&T);
 
     int caseMain = 0;
     string input;
@@ -196,11 +244,12 @@ int main (){
         cout << string(3, '=') << " Program Konter " << string(3, '=') << endl;
         cout << "1. Tambah Voucher" << endl;
         cout << "2. Lihat Voucher" << endl;
-        cout << "3. Tambah Antrian" << endl;
-        cout << "4. Proses Antrian" << endl;
-        cout << "5. Lihat Antrian" << endl;
-        cout << "6. Lihat History" << endl;
-        cout << "7. Lihat Laporan" << endl;
+        cout << "3. Edit Voucher" << endl;
+        cout << "4. Tambah Antrian" << endl;
+        cout << "5. Proses Antrian" << endl;
+        cout << "6. Lihat Antrian" << endl;
+        cout << "7. Lihat History" << endl;
+        cout << "8. Lihat Laporan" << endl;
         cout << "0. Keluar" << endl;
         cout << "Pilihan : ";
         cin >> input;
@@ -234,16 +283,20 @@ int main (){
                 cin.ignore();
                 cin.get();
                 break;
-
+            
             case 3:
+                editStock(&D);
+                break;
+            
+            case 4:
                 enqueueCos(&C, &D);
                 break;
 
-            case 4:
+            case 5:
                 dequeueCos(&C, &D, &H, &T);
                 break;
 
-            case 5:
+            case 6:
                 cout << endl;
 
                 if(isEmptyQueue(C)){
@@ -261,7 +314,7 @@ int main (){
                 cin.get();
                 break;
 
-            case 6:
+            case 7:
                 cout << endl;
 
                 if(isEmptyHistory(H)){
@@ -279,7 +332,7 @@ int main (){
                 cin.get();
                 break;
 
-            case 7:
+            case 8:
                 cout << endl;
 
                 if (isEmptyTabel(T)){

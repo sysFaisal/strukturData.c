@@ -12,7 +12,7 @@
 
 using namespace std;
 #define fileVouncher "Teori/Tubes/db/dataVoucher.txt"
-#define fileSaveVouncher "Teori/Tubes/dataVoucher.txt"
+#define fileSaveVouncher "Teori/Tubes/db/dataVoucher.txt"
 
 struct voucherPulsa{
     string kodePulsa;
@@ -154,9 +154,8 @@ inline void loadStoack(linkList *L){
 
             addLastList(L, provider, kode,
             stoi(nominal), stoi(harga), stoi(stock));
-            
-        };
 
+        };
 
     };
 
@@ -180,7 +179,7 @@ inline voucherPulsa* cariVoucher(linkList *L, string kode){
     return nullptr;
 };
 
-inline bool editStock(linkList *L, string kode, int minstock, int *actualSell, int *harga){
+inline bool kurangiStock(linkList *L, string kode, int minstock, int *actualSell, int *harga){
     if (isEmptyList(*(L))){
         return false;
     };
