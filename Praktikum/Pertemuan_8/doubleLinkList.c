@@ -1,7 +1,7 @@
 /* Program : doubleLinkList.h
 Author : 2550081098, Faisal Fajari
 Kelas : E
-Deskripsi: Header file dari prototype double linked list
+Deskripsi: Body file dari prototype double linked list
 Tanggal : 26/5/2026
 */
 /* ADT double Linear Linked List

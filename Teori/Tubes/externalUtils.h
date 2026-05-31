@@ -10,7 +10,7 @@ using namespace std;
 
 inline string saferString(string text, int maxlength){
 
-    if(text.length() > maxlength){
+    if((int)text.length() > maxlength){
         text = text.substr(0,maxlength - 2) + "..";
         return text;
     };
@@ -34,13 +34,13 @@ inline bool isDigit(string text, bool cekPanjang){
         return false;
     };
 
-    if (cekPanjang && text.length() > 9){
+    if (cekPanjang && (int)text.length() > 9){
         return false;
     };
 
 
     int counter;
-    for (counter = 0; counter < text.length(); counter++){
+    for (counter = 0; counter < (int)text.length(); counter++){
 
         if (!(text[counter] >= '0' && text[counter] <= '9')){
             return false;
