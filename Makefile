@@ -1,31 +1,16 @@
 # DIR = Teori/Tugas/mhslink
-DIR = Praktikum/Pertemuan_8/Tugas
+DIR = Praktikum/Pertemuan_7/tugas_2
 # DIR = Nyoba/monitoring
 
+# For C-only project (Teori/Tubes is now C, not C++)
 SRC_C   = $(wildcard $(DIR)/*.c)
-SRC_CPP = $(wildcard $(DIR)/*.cpp)
 
-# FLAGS = -I"$(DIR)" -lncursesw -lpthread -Wall -Wextra -Wshadow -std=c++17 -O2
+COMPILER = gcc
+SRC      = $(SRC_C)
 
-ifeq ($(SRC_CPP),)
+FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
 
-    COMPILER = gcc
-    SRC      = $(SRC_C)
-
-    FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c17 -O2
-
-    DEBUG_FLAGS = -g -O0
-
-else
-
-    COMPILER = g++
-    SRC      = $(SRC_C) $(SRC_CPP)
-
-    FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
-
-    DEBUG_FLAGS = -g -O0
-
-endif
+DEBUG_FLAGS = -g -O0
 
 ifeq ($(OS),Windows_NT)
 
