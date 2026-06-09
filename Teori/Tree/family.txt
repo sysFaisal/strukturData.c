@@ -1,0 +1,8 @@
+Raden Kusuma,NULL
+Raden Kusuma,Ahmad Kusuma
+Raden Kusuma,Ridwan Kusuma
+Ahmad Kusuma,Hermawan Kusuma
+Ridwan Kusuma,Dani Kusuma
+Hermawan Kusuma,Dadang Kurma
+Hermawan Kusuma,Rani Lestari
+Dadang Kurma,Zaki Kurma
