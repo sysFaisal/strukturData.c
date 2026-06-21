@@ -23,8 +23,10 @@ int main(){
         scanf("%d", &N);
     }
 
-    PreOrder(MyPohon);
+    printf("Pengurutan PreOrder :"); PreOrder(MyPohon); printf("\n");
+    printf("Pengurutan InOrder :"); InOrder(MyPohon); printf("\n");
+    printf("Pengurutan PostOrder :"); PostOrder(MyPohon); printf("\n");
     printf("\nTinggi Pohon : %d", TinggiPohon(MyPohon));
-    getch();
+    getchar();
     return 0;
 }

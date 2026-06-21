@@ -1,5 +1,5 @@
-DIR = Teori/Tree
-# DIR = Praktikum/Pertemuan_8/Tugas
+# DIR = Teori/Tree
+DIR = Praktikum/Pertemuan_8/Latihan
 # DIR = Nyoba/monitoring
 
 SRC_C   = $(wildcard $(DIR)/*.c)
@@ -21,7 +21,8 @@ else
     COMPILER = g++
     SRC      = $(SRC_C) $(SRC_CPP)
 
-    FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
+    FLAGS = -I"$(DIR)" -lncursesw -lpthread -Wall -Wextra -Wshadow -std=c++17 -O2
+    # FLAGS = -I"$(DIR)" -Wall -Wextra -Wshadow -std=c++17 -O2
 
     DEBUG_FLAGS = -g -O0
 

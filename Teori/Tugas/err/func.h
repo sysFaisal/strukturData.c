@@ -23,5 +23,7 @@ int CountStack(Stack *Data);
 void push (Stack *Data, string namaBuku);
 void pop (Stack *Data, string *rollbackBuku = nullptr);
 void cetakStack(Stack *Data);
+void peekStack(Stack *Data, int position);
+void changeStack(Stack *Data, int position, string namaBuku);
 
 #endif

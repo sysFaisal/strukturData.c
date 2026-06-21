@@ -83,3 +83,36 @@ void cetakStack(Stack *Data){
 
     return;
 };
+
+void peekStack(Stack *Data, int position){
+    if (isEmptyStack(Data)){
+        return;
+    };
+
+    if (!( (position >= 1) && (position <= Data->top) )){
+        return;
+    };
+
+    position = position - 1;
+    int idx = Data->top - position;
+
+    cout <<  endl <<"Nama Buku Posisi ke " << position + 1 << ": " << Data->namaBuku[idx] << endl;
+};
+
+void changeStack(Stack *Data, int position, string namaBuku){
+    if (isEmptyStack(Data)){
+        return;
+    };
+
+    if (!( (position >= 1) && (position <= Data->top) )){
+        return;
+    };
+
+    position = position - 1;
+    int idx = Data->top - position;
+
+    string VeryTemp = Data->namaBuku[idx];
+    Data->namaBuku[idx] = namaBuku;
+
+    cout << endl << "Buku Posisi ke " << position + 1 << ": " << VeryTemp << " Menjadi " << Data->namaBuku[idx] << endl;
+};

@@ -14,6 +14,9 @@ int main (){
         cout << "1. Tumpuk Buku (Push)" << endl;
         cout << "2. Ambil Buku (Pop)" << endl;
         cout << "3. Cetak Semua Buku" << endl;
+        cout << "4. Hitung Semua Buku" << endl;
+        cout << "5. Lihat Buku (Peek Stack)" << endl;
+        cout << "6. Ganti Buku (Change Stack)" << endl;
         cout << "0. Keluar" << endl;
         cout << "Pilihan : ";
         cin >> pilihan;
@@ -103,9 +106,78 @@ int main (){
                 cout << "Tekan enter untuk lanjut...";
                 cin.ignore();
                 cin.get();
+                break;
+
+            case 4:
+
+                if (isEmptyStack(&Q)) {
+                    cout << "Stack Kosong!" << endl;
+                    cout << "Tekan enter untuk lanjut...";
+                    cin.ignore();
+                    cin.get();
+                    break;
+                }
+
+                cout << "Jumlah Buku: " << CountStack(&Q) << endl;
+
+                cout << "Tekan enter untuk lanjut...";
+                cin.ignore();
+                cin.get();
 
                 break;
-            
+
+
+            case 5:
+
+                if (isEmptyStack(&Q)) {
+                    cout << "Stack Kosong!" << endl;
+                    cout << "Tekan enter untuk lanjut...";
+                    cin.ignore();
+                    cin.get();
+                    break;
+                }
+
+                int posisiPeek;
+
+                cout << "=== Peek Stack ===" << endl;
+                cout << "Masukan Posisi: ";
+                cin >> posisiPeek;
+
+                peekStack(&Q, posisiPeek);
+
+                cout << "Tekan enter untuk lanjut...";
+                cin.ignore();
+                cin.get();
+                break;
+
+            case 6: {
+
+                if (isEmptyStack(&Q)) {
+                    cout << "Stack Kosong!" << endl;
+                    cout << "Tekan enter untuk lanjut...";
+                    cin.ignore();
+                    cin.get();
+                    break;
+                }
+
+                int posisiChange;
+                string bukuBaru;
+
+                cout << "=== Change Stack ===" << endl;
+
+                cout << "Masukan Posisi dari atas: ";
+                cin >> posisiChange;
+
+                cout << "Masukan Buku Baru: ";
+                cin >> bukuBaru;
+
+                changeStack(&Q, posisiChange, bukuBaru);
+
+                cout << "Tekan enter untuk lanjut...";
+                cin.ignore();
+                cin.get();
+                break;
+            }
             case 0:
                 cout << "Keluar program..." << endl ;
                 break;
@@ -115,7 +187,7 @@ int main (){
                 cin.ignore();
                 cin.get();
         }
-             
+
     } while (pilihan != 0);
 
     return 0;

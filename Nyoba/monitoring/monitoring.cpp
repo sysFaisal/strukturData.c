@@ -581,7 +581,7 @@ int main()
         refresh();
 
         this_thread::sleep_for(
-            chrono::milliseconds(2000)
+            chrono::milliseconds(3000)
         );
     }
 

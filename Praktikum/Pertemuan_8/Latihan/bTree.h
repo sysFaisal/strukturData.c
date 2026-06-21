@@ -11,7 +11,6 @@ Tanggal :
 
 #include <stdio.h>
 #include <stdlib.h>
-#include <conio.h>
 
 #define nil NULL
 #define info(P) (P)->info
